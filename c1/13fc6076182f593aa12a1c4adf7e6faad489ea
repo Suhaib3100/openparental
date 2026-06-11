@@ -1,0 +1,77 @@
+backend/src/app.controller.ts
+  s_dc3fc204d3267d::t_ec8dcd2b26d200 1-13
+backend/.env.example
+  s_dc3fc204d3267d::t_0ebe4ca253d3d1 1-25
+backend/src/config/configuration.ts
+  s_dc3fc204d3267d::t_46d44f1a8aef55 1-22
+backend/src/redis/redis.module.ts
+  s_dc3fc204d3267d::t_920fd3026198bd 1-9
+backend/src/auth/dto/refresh.dto.ts
+  s_dc3fc204d3267d::t_b1ccc8ef2ce6e7 1-7
+backend/prisma/schema.prisma
+  s_dc3fc204d3267d::t_4ad20e5a548c25 1-306
+backend/package.json
+  s_dc3fc204d3267d::t_833ac9b65ad63f 1-67
+backend/src/auth/auth.controller.ts
+  s_dc3fc204d3267d::t_671c167dbbf4c3 1-44
+backend/src/main.ts
+  s_dc3fc204d3267d::t_7d5d250ae2a243 1-17
+backend/nest-cli.json
+  s_dc3fc204d3267d::t_06c676d38bc9fe 1-8
+backend/src/common/types.ts
+  s_dc3fc204d3267d::t_f710dd4d443925 1-33
+backend/src/app.module.ts
+  s_dc3fc204d3267d::t_5dfdc78d3fdd30 1-18
+backend/src/auth/token.service.ts
+  s_dc3fc204d3267d::t_0f5d9809e8f9b8 1-47
+backend/src/common/hash.util.ts
+  s_dc3fc204d3267d::t_e5effc5f1d86dd 1-27
+backend/src/prisma/prisma.module.ts
+  s_dc3fc204d3267d::t_d7f367927780a6 1-9
+backend/src/common/decorators/current-user.decorator.ts
+  s_dc3fc204d3267d::t_d2384b2df2ac61 1-9
+backend/src/common/guards/device-auth.guard.ts
+  s_dc3fc204d3267d::t_8fc99e5bf37556 1-38
+backend/tsconfig.json
+  s_dc3fc204d3267d::t_c0202a693f93b6 1-26
+backend/src/auth/dto/register.dto.ts
+  s_dc3fc204d3267d::t_c225c082063874 1-14
+backend/src/prisma/prisma.service.ts
+  s_dc3fc204d3267d::t_729b6eccbc29e0 1-9
+backend/src/common/decorators/current-device.decorator.ts
+  s_dc3fc204d3267d::t_0aa43e57c389fe 1-9
+backend/src/auth/auth.module.ts
+  s_dc3fc204d3267d::t_c82c2de48907b4 1-20
+backend/src/auth/auth.service.spec.ts
+  s_dc3fc204d3267d::t_c49a963bc44529 1-182
+backend/src/common/guards/jwt-auth.guard.ts
+  s_dc3fc204d3267d::t_d352cb29f19826 1-38
+backend/src/auth/dto/login.dto.ts
+  s_dc3fc204d3267d::t_eaaaf385d82eba 1-9
+backend/src/redis/redis.service.ts
+  s_dc3fc204d3267d::t_0f4a944cbe6727 1-55
+backend/tsconfig.build.json
+  s_dc3fc204d3267d::t_e05357488348de 1-4
+backend/src/auth/auth.service.ts
+  s_dc3fc204d3267d::t_9ae5266744207b 1-114
+backend/docker-compose.yml
+  s_dc3fc204d3267d::t_f1489b48916b80 1-27
+backend/test/jest-e2e.json
+  s_dc3fc204d3267d::t_9cd51231cd65da 1-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "c113fc6076182f593aa12a1c4adf7e6faad489ea",
+  "prompts": {},
+  "sessions": {
+    "s_dc3fc204d3267d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fb8ab451-0be6-4c27-8edd-e731427d9e1b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Suhaib <suhaibking310@gmail.com>"
+    }
+  }
+}
