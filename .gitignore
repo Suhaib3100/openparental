@@ -1,0 +1,36 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Android
+android-managed/.gradle/
+android-managed/build/
+android-managed/app/build/
+android-managed/local.properties
+android-managed/.idea/
+android-managed/captures/
+*.apk
+*.aab
+*.keystore
+*.jks
+
+# Gradle
+.gradle/
+build/
+
+# Node / backend
+node_modules/
+dist/
+backend/.env
+
+# Flutter / parent app
+app-parent/.dart_tool/
+app-parent/build/
+app-parent/.flutter-plugins
+app-parent/.flutter-plugins-dependencies
+
+# logs / env / secrets
+*.log
+.env
+.env.*
+!.env.example

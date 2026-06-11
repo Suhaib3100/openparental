@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">monii survival spike</string>
+    <string name="spike_subtitle">Phase 0b · this app does nothing but stay alive. Grant battery + autostart, leave it overnight on a real device, then read the log.</string>
+    <string name="fgs_title">monii</string>
+    <string name="fgs_text">Supervisor running</string>
+    <string name="btn_start">Start service</string>
+    <string name="btn_refresh">Refresh</string>
+    <string name="btn_battery">Allow unrestricted battery</string>
+    <string name="btn_autostart">Open autostart settings (OEM)</string>
+    <string name="log_header">Event log (newest first)</string>
+</resources>
