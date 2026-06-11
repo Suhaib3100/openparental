@@ -83,6 +83,14 @@ export class AuthService {
     });
   }
 
+  /** Register the parent device's FCM token so alerts can reach them. */
+  async setFcmToken(userId: string, fcmToken: string): Promise<void> {
+    await this.prisma.user.update({
+      where: { id: userId },
+      data: { fcmToken },
+    });
+  }
+
   /** Issue an access+refresh pair and persist the (rotated) refresh hash. */
   private async issue(user: {
     id: string;

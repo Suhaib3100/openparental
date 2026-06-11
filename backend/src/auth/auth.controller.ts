@@ -3,6 +3,7 @@ import {
   Controller,
   HttpCode,
   HttpStatus,
+  Patch,
   Post,
   UseGuards,
 } from '@nestjs/common';
@@ -10,6 +11,7 @@ import { CurrentUser } from '../common/decorators/current-user.decorator';
 import { JwtAuthGuard } from '../common/guards/jwt-auth.guard';
 import { AuthUser } from '../common/types';
 import { AuthService } from './auth.service';
+import { FcmTokenDto } from './dto/fcm-token.dto';
 import { LoginDto } from './dto/login.dto';
 import { RefreshDto } from './dto/refresh.dto';
 import { RegisterDto } from './dto/register.dto';
@@ -40,5 +42,15 @@ export class AuthController {
   @UseGuards(JwtAuthGuard)
   async logout(@CurrentUser() user: AuthUser): Promise<void> {
     await this.auth.logout(user.userId);
+  }
+
+  @Patch('fcm-token')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  @UseGuards(JwtAuthGuard)
+  async setFcmToken(
+    @CurrentUser() user: AuthUser,
+    @Body() dto: FcmTokenDto,
+  ): Promise<void> {
+    await this.auth.setFcmToken(user.userId, dto.fcmToken);
   }
 }

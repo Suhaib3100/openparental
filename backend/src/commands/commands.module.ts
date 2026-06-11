@@ -7,5 +7,6 @@ import { CommandsService } from './commands.service';
   imports: [DevicesModule],
   controllers: [CommandsController],
   providers: [CommandsService],
+  exports: [CommandsService],
 })
 export class CommandsModule {}
