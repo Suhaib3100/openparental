@@ -1,0 +1,48 @@
+backend/src/policies/policies.service.spec.ts
+  s_dc3fc204d3267d::t_ff701c80a28978 1-90
+backend/src/alerts/dto/request-unblock.dto.ts
+  s_dc3fc204d3267d::t_f0335fb61b08a9 1-11
+backend/src/auth/auth.controller.ts
+  s_dc3fc204d3267d::t_dcbd3a7901c5c4 6,14
+  s_dc3fc204d3267d::t_bb66393efaf6b1 46-55
+backend/src/alerts/alerts.service.ts
+  s_dc3fc204d3267d::t_224805d573fe10 1-98
+backend/src/alerts/alerts.controller.ts
+  s_dc3fc204d3267d::t_4fed8602b8dc3a 1-46
+backend/src/alerts/alerts.service.spec.ts
+  s_dc3fc204d3267d::t_b0c5f6a73c0a89 1-85
+backend/src/alerts/alerts.module.ts
+  s_dc3fc204d3267d::t_9b6e01c77f6f9c 1-12
+backend/src/policies/policies.module.ts
+  s_dc3fc204d3267d::t_76395de1c5d6b3 1-11
+backend/src/commands/commands.module.ts
+  s_dc3fc204d3267d::t_c8603109d09e99 10
+backend/src/auth/auth.service.ts
+  s_dc3fc204d3267d::t_d232402ac999c7 86-93
+backend/src/app.module.ts
+  s_dc3fc204d3267d::t_f795fe1bf0f161 5,12,23,28
+backend/src/policies/policies.controller.ts
+  s_dc3fc204d3267d::t_60a396dd853bc1 1-27
+backend/src/auth/dto/fcm-token.dto.ts
+  s_dc3fc204d3267d::t_3f2c25acf15313 1-7
+backend/src/policies/policies.service.ts
+  s_dc3fc204d3267d::t_846a1cdd093bbe 1-82
+backend/src/policies/dto/update-policy.dto.ts
+  s_dc3fc204d3267d::t_1064212cfd1322 1-16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "1778d200f760819b34b748af88bbddad11f24220",
+  "prompts": {},
+  "sessions": {
+    "s_dc3fc204d3267d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fb8ab451-0be6-4c27-8edd-e731427d9e1b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Suhaib <suhaibking310@gmail.com>"
+    }
+  }
+}
