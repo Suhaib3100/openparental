@@ -1,0 +1,61 @@
+android-managed/app/src/main/kotlin/app/monii/managed/supervisor/WatchdogScheduler.kt
+  s_dc3fc204d3267d::t_c31b307268462c 1-21
+android-managed/app/src/main/res/values/themes.xml
+  s_dc3fc204d3267d::t_d384535ecee2de 1-3
+android-managed/app/src/main/kotlin/app/monii/managed/ui/MainActivity.kt
+  s_dc3fc204d3267d::t_1768bc26269173 92-95
+  s_dc3fc204d3267d::t_7d3ab8c4a2f684 1-91,96-132
+android-managed/app/src/main/kotlin/app/monii/managed/supervisor/SupervisorService.kt
+  s_dc3fc204d3267d::t_107a7e0196866e 1-86,88-117
+  s_dc3fc204d3267d::t_f5b33d889d73f1 87
+android-managed/app/proguard-rules.pro
+  s_dc3fc204d3267d::t_802bcc80470353 1
+android-managed/app/build.gradle.kts
+  s_dc3fc204d3267d::t_90999591116789 1-48
+android-managed/gradle/wrapper/gradle-wrapper.properties
+  s_dc3fc204d3267d::t_2a9ddb2af090f9 1-7
+android-managed/app/src/main/res/layout/activity_main.xml
+  s_dc3fc204d3267d::t_d8d69e1929ed37 1-84
+README.md
+  s_dc3fc204d3267d::t_727c6f08224ef2 1-48
+android-managed/gradle.properties
+  s_dc3fc204d3267d::t_475bca431eaff6 1-5
+android-managed/build.gradle.kts
+  s_dc3fc204d3267d::t_2f704f8595db2a 1-5
+android-managed/app/src/main/res/drawable/ic_launcher.xml
+  s_dc3fc204d3267d::t_2c4211f1f114b3 1-12
+android-managed/README.md
+  s_dc3fc204d3267d::t_74889a6c903e91 1-51
+android-managed/app/src/main/kotlin/app/monii/managed/supervisor/BootReceiver.kt
+  s_dc3fc204d3267d::t_fa4d9a3630f989 1-14
+android-managed/app/src/main/kotlin/app/monii/managed/survival/SurvivalLog.kt
+  s_dc3fc204d3267d::t_675305a1201d64 1-95
+android-managed/app/src/main/kotlin/app/monii/managed/supervisor/WatchdogWorker.kt
+  s_dc3fc204d3267d::t_c1d2db33096f1d 1-31
+.gitignore
+  s_dc3fc204d3267d::t_f841c590dca719 1-36
+android-managed/settings.gradle.kts
+  s_dc3fc204d3267d::t_38e0fb44d015b3 1-17
+android-managed/app/src/main/AndroidManifest.xml
+  s_dc3fc204d3267d::t_c78d8c42e7a6b7 1-56
+android-managed/app/src/main/kotlin/app/monii/managed/MoniiApp.kt
+  s_dc3fc204d3267d::t_4fe923dd498e59 1-12
+android-managed/app/src/main/res/values/strings.xml
+  s_dc3fc204d3267d::t_a7162a8dde414e 1-11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "59407cfa22e4ea3ca4882be5f8111be524bf314f",
+  "prompts": {},
+  "sessions": {
+    "s_dc3fc204d3267d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fb8ab451-0be6-4c27-8edd-e731427d9e1b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Suhaib <suhaibking310@gmail.com>"
+    }
+  }
+}
