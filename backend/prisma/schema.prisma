@@ -1,0 +1,306 @@
+// monii data model — single source of truth.
+// v1 (GREEN) tables are fully wired; v1.5 tables (ContentArchive, PhotoFlag,
+// ScreenSession, MediaAsset) are present so migrations are stable, endpoints land later.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  PARENT
+}
+
+enum DeviceStatus {
+  PROVISIONING
+  ONLINE
+  OFFLINE
+  DARK // missed heartbeats — "went dark"
+}
+
+enum PairingStatus {
+  PENDING
+  CLAIMED
+  EXPIRED
+}
+
+enum CommandType {
+  LOCK
+  UNLOCK
+  SET_POLICY
+  FETCH_LOGS
+  REQUEST_LOCATION
+  SCREEN_VIEW_REQUEST
+  PING
+}
+
+enum CommandState {
+  QUEUED
+  SENT
+  ACKED
+  DONE
+  EXPIRED
+  FAILED
+}
+
+enum TamperKind {
+  ACCESSIBILITY_OFF
+  ADMIN_OFF
+  VPN_OFF
+  VPN_EVICTED
+  BATTERY_OPT_OFF
+  FORCE_STOP
+  WENT_DARK
+  RECOVERED
+}
+
+enum AlertType {
+  TAMPER
+  NEW_APP
+  GEOFENCE
+  KEYWORD
+  UNBLOCK_REQUEST
+  DEVICE_OFFLINE
+  SYSTEM
+}
+
+enum EventType {
+  APP_FOREGROUND
+  USAGE_SUMMARY
+  APP_INSTALLED
+  APP_REMOVED
+  SCREEN_TIME
+  PERMISSION_STATE
+}
+
+model Family {
+  id        String     @id @default(uuid())
+  name      String
+  createdAt DateTime   @default(now())
+  users     User[]
+  devices   Device[]
+  pairings  Pairing[]
+  policies  Policy[]
+  alerts    Alert[]
+  auditLogs AuditLog[]
+}
+
+model User {
+  id               String   @id @default(uuid())
+  family           Family   @relation(fields: [familyId], references: [id], onDelete: Cascade)
+  familyId         String
+  email            String   @unique
+  passwordHash     String
+  role             UserRole @default(PARENT)
+  refreshTokenHash String?
+  fcmToken         String?
+  createdAt        DateTime @default(now())
+
+  @@index([familyId])
+}
+
+model Device {
+  id           String        @id @default(uuid())
+  family       Family        @relation(fields: [familyId], references: [id], onDelete: Cascade)
+  familyId     String
+  name         String
+  manufacturer String?
+  model        String?
+  platform     String        @default("android")
+  osVersion    String?
+  appVersion   String?
+  status       DeviceStatus  @default(PROVISIONING)
+  batteryPct   Int?
+  fcmToken     String?
+  secretHash   String // device auth secret (hashed), minted at pairing claim
+  lastSeenAt   DateTime?
+  createdAt    DateTime      @default(now())
+  commands     Command[]
+  events       Event[]
+  tamperEvents TamperEvent[]
+  locations    Location[]
+  heartbeats   Heartbeat[]
+  consents     Consent[]
+  alerts       Alert[]
+
+  @@index([familyId])
+}
+
+model Pairing {
+  id              String        @id @default(uuid())
+  family          Family        @relation(fields: [familyId], references: [id], onDelete: Cascade)
+  familyId        String
+  code            String        @unique // short human code
+  qrToken         String        @unique // opaque QR token
+  status          PairingStatus @default(PENDING)
+  deviceName      String?
+  claimedDeviceId String?
+  expiresAt       DateTime
+  createdAt       DateTime      @default(now())
+
+  @@index([familyId])
+}
+
+model Policy {
+  id        String   @id @default(uuid())
+  family    Family   @relation(fields: [familyId], references: [id], onDelete: Cascade)
+  familyId  String
+  version   Int
+  // { blockedApps: string[], appLimits: {pkg, dailyMinutes}[],
+  //   screenTime: {dailyMinutes, bedtime}, schedules: {...}[], categories: string[] }
+  rules     Json
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  @@unique([familyId, version])
+  @@index([familyId])
+}
+
+model Command {
+  id             String       @id @default(uuid())
+  device         Device       @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+  deviceId       String
+  type           CommandType
+  payload        Json?
+  state          CommandState @default(QUEUED)
+  idempotencyKey String       @unique
+  result         Json?
+  error          String?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  expiresAt      DateTime
+
+  @@index([deviceId, state])
+}
+
+model Event {
+  id         String    @id @default(uuid())
+  device     Device    @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+  deviceId   String
+  type       EventType
+  data       Json
+  occurredAt DateTime
+  createdAt  DateTime  @default(now())
+
+  @@index([deviceId, occurredAt])
+}
+
+model TamperEvent {
+  id         String     @id @default(uuid())
+  device     Device     @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+  deviceId   String
+  kind       TamperKind
+  detail     String?
+  occurredAt DateTime
+  createdAt  DateTime   @default(now())
+
+  @@index([deviceId, occurredAt])
+}
+
+model Heartbeat {
+  id         String   @id @default(uuid())
+  device     Device   @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+  deviceId   String
+  batteryPct Int?
+  receivedAt DateTime @default(now())
+
+  @@index([deviceId, receivedAt])
+}
+
+model Location {
+  id         String   @id @default(uuid())
+  device     Device   @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+  deviceId   String
+  lat        Float
+  lng        Float
+  accuracyM  Float?
+  occurredAt DateTime
+  createdAt  DateTime @default(now())
+
+  @@index([deviceId, occurredAt])
+}
+
+model Alert {
+  id        String    @id @default(uuid())
+  family    Family    @relation(fields: [familyId], references: [id], onDelete: Cascade)
+  familyId  String
+  device    Device?   @relation(fields: [deviceId], references: [id], onDelete: SetNull)
+  deviceId  String?
+  type      AlertType
+  title     String
+  body      String
+  data      Json?
+  readAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([familyId, createdAt])
+}
+
+model Consent {
+  id        String   @id @default(uuid())
+  device    Device   @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+  deviceId  String
+  version   Int
+  parentAck Boolean  @default(false)
+  childAck  Boolean  @default(false)
+  scope     Json // what is monitored, disclosed to the teen
+  createdAt DateTime @default(now())
+
+  @@index([deviceId])
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  family    Family?  @relation(fields: [familyId], references: [id], onDelete: SetNull)
+  familyId  String?
+  actor     String // userId | deviceId | "system"
+  action    String
+  data      Json?
+  createdAt DateTime @default(now())
+
+  @@index([familyId, createdAt])
+}
+
+// ---------- v1.5 (schema present; endpoints land with AMBER work) ----------
+
+model ContentArchive {
+  id           String   @id @default(uuid())
+  deviceId     String
+  source       String // sms | calllog | whatsapp | browser | tiktok | youtube | keyword
+  direction    String? // in | out
+  counterparty String?
+  body         String
+  matched      String? // matched keyword, if any
+  occurredAt   DateTime
+  createdAt    DateTime @default(now())
+
+  @@index([deviceId, occurredAt])
+}
+
+model PhotoFlag {
+  // Count/category ONLY. No raw image, no thumbnail (CSAM strict liability).
+  id         String   @id @default(uuid())
+  deviceId   String
+  category   String
+  confidence Float
+  occurredAt DateTime
+  createdAt  DateTime @default(now())
+
+  @@index([deviceId, occurredAt])
+}
+
+model ScreenSession {
+  id         String    @id @default(uuid())
+  deviceId   String
+  startedAt  DateTime  @default(now())
+  endedAt    DateTime?
+  consented  Boolean   @default(false)
+  transport  String? // webrtc | clip
+  createdAt  DateTime  @default(now())
+
+  @@index([deviceId, startedAt])
+}
