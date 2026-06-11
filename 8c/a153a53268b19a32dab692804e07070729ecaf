@@ -1,0 +1,49 @@
+backend/src/pairing/pairing.service.spec.ts
+  s_dc3fc204d3267d::t_fbd935025b405d 1-114
+backend/src/devices/dto/update-device.dto.ts
+  s_dc3fc204d3267d::t_20fb6b71526a5d 1-7
+backend/src/audit/audit.module.ts
+  s_dc3fc204d3267d::t_6a49fbe1bfbe1f 1-9
+backend/src/pairing/pairing.controller.ts
+  s_dc3fc204d3267d::t_773618eea4e9dd 1-40
+backend/src/devices/dto/device-token.dto.ts
+  s_dc3fc204d3267d::t_dd202f67fdea08 1-11
+backend/src/pairing/pairing.module.ts
+  s_dc3fc204d3267d::t_173e14d1553857 1-11
+backend/src/devices/devices.service.ts
+  s_dc3fc204d3267d::t_4a0a421a34588d 1-119
+backend/src/pairing/dto/create-pairing.dto.ts
+  s_dc3fc204d3267d::t_d194c906ee5d7a 1-7
+backend/src/devices/devices.controller.ts
+  s_dc3fc204d3267d::t_41f507fab49dc5 1-77
+backend/src/pairing/pairing.service.ts
+  s_dc3fc204d3267d::t_6086314bdc33fb 1-108
+backend/src/app.module.ts
+  s_dc3fc204d3267d::t_fd3f8e9ecd5898 5,7-8,17,19-20
+backend/src/audit/audit.service.ts
+  s_dc3fc204d3267d::t_4329c376a5ec98 1-27
+backend/src/devices/dto/device-self-update.dto.ts
+  s_dc3fc204d3267d::t_f46c34de2aab19 1-21
+backend/src/devices/devices.service.spec.ts
+  s_dc3fc204d3267d::t_92f8d0d3e28b7c 1-116
+backend/src/devices/devices.module.ts
+  s_dc3fc204d3267d::t_5a2606a81a8e79 1-10
+backend/src/pairing/dto/claim-pairing.dto.ts
+  s_dc3fc204d3267d::t_8f64c7dec45c40 1-32
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "8ca153a53268b19a32dab692804e07070729ecaf",
+  "prompts": {},
+  "sessions": {
+    "s_dc3fc204d3267d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fb8ab451-0be6-4c27-8edd-e731427d9e1b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Suhaib <suhaibking310@gmail.com>"
+    }
+  }
+}
