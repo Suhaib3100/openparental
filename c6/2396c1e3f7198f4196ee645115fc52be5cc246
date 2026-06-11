@@ -1,0 +1,338 @@
+backend/coverage/lcov-report/src/policies/policies.service.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-318,320-331
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 319
+backend/coverage/lcov-report/src/redis/redis.module.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-99,101-112
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 100
+backend/coverage/lcov-report/src/commands/index.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-133,135-146
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 134
+backend/src/common/hash.util.spec.ts
+  s_dc3fc204d3267d::t_bb14d3796acaec 1-29
+backend/src/auth/token.service.spec.ts
+  s_dc3fc204d3267d::t_116042b51b4c4d 1-18,20-28,30-31,33-43
+  s_dc3fc204d3267d::t_46cd8af6d3d1b5 19,29,32
+backend/coverage/lcov-report/src/prisma/index.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 119
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-118,120-131
+backend/coverage/lcov-report/src/fcm/fcm.service.ts.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 268
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-267,269-280
+backend/coverage/lcov-report/src/pairing/dto/create-pairing.dto.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-93,95-106
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 94
+backend/coverage/lcov-report/base.css
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-224
+backend/coverage/lcov-report/src/config/configuration.ts.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 139
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-138,140-151
+backend/coverage/lcov-report/src/heartbeat/dto/index.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-103,105-116
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 104
+backend/coverage/lcov-report/src/commands/commands.controller.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-297,299-310
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 298
+backend/coverage/lcov-report/src/events/dto/ingest-events.dto.ts.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 160
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-159,161-172
+backend/coverage/lcov-report/src/locations/dto/index.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 104
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-103,105-116
+backend/coverage/lcov-report/src/locations/locations.service.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-222,224-235
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 223
+backend/coverage/lcov-report/src/alerts/dto/request-unblock.dto.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-105,107-118
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 106
+backend/coverage/lcov.info
+  s_dc3fc204d3267d::t_8a8f7e30e17f3a 624-643,646-648,688-704,706-709,711-713,715-718,720,728-749,751-758,760
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 349-367,369-370,372,374,376,379
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-348,368,371,373,375,377-378,380-623,644-645,649-687,705,710,714,719,721-727,750,759,761-1761
+backend/coverage/lcov-report/src/alerts/alerts.module.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-108,110-121
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 109
+backend/coverage/lcov-report/src/audit/audit.service.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-153,155-166
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 154
+backend/coverage/lcov-report/src/pairing/dto/claim-pairing.dto.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-168,170-181
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 169
+backend/coverage/lcov-report/src/tamper/tamper.module.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-108,110-121
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 109
+backend/coverage/lcov-report/src/auth/index.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-25,27,29-32,34,36-39,41,43-46,48,50-126,130,139-148,150-161
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 26,28,33,35,40,42,47,49,127-129,131-138,149
+backend/coverage/lcov-report/src/fcm/fcm.module.ts.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 100
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-99,101-112
+backend/coverage/lcov-report/src/redis/redis.service.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-237,239-250
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 238
+backend/coverage/lcov-report/src/index.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-133,135-146
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 134
+backend/coverage/lcov-report/src/alerts/index.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 134
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-133,135-146
+backend/coverage/lcov-report/src/audit/index.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 119
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-118,120-131
+backend/coverage/lcov-report/src/commands/dto/index.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 119
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-118,120-131
+backend/coverage/lcov-report/src/alerts/dto/index.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-103,105-116
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 104
+backend/coverage/lcov-report/src/common/hash.util.ts.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 154
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-92,94-96,99-101,106-108,111-113,119-153,155-166
+  s_dc3fc204d3267d::t_8a8f7e30e17f3a 93,97-98,102-105,109-110,114-118
+backend/coverage/lcov-report/index.html
+  s_dc3fc204d3267d::t_8a8f7e30e17f3a 232-234,236-243
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-25,27,29-32,34,36-39,41,43-46,48,50-142,154-231,235,244-523,525-536
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 26,28,33,35,40,42,47,49,143-153,524
+backend/coverage/lcov-report/src/commands/commands.service.ts.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 565
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-564,566-577
+backend/coverage/lcov-report/src/events/dto/index.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 104
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-103,105-116
+backend/coverage/lcov-report/src/pairing/index.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-133,135-146
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 134
+backend/coverage/lcov-report/src/pairing/pairing.service.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-396,398-409
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 397
+backend/coverage/lcov-report/src/audit/audit.module.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-99,101-112
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 100
+backend/coverage/lcov-report/src/auth/dto/refresh.dto.ts.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 94
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-93,95-106
+backend/coverage/lcov-report/src/auth/token.service.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-25,27,29-32,34,36-39,41,43-46,48,50-63,65-112,116-118,120-125,127-128,133-135,137-142,144-149,151-156,158-171,174-175,180-181,184-188,191-195,198-202,205-213,215-226
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 26,28,33,35,40,42,47,49,64,113-115,119,126,129-132,136,143,150,157,172-173,176-179,182-183,189-190,196-197,203-204,214
+backend/coverage/lcov-report/src/heartbeat/heartbeat.module.ts.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 106
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-105,107-118
+backend/coverage/lcov-report/src/devices/dto/device-token.dto.ts.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 106
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-105,107-118
+backend/coverage/lcov-report/src/alerts/alerts.service.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-366,368-379
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 367
+backend/coverage/lcov-report/src/heartbeat/index.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-133,135-146
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 134
+backend/coverage/lcov-report/src/auth/dto/index.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 149
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-148,150-161
+backend/coverage/lcov-report/src/events/events.service.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-210,212-223
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 211
+backend/coverage/lcov-report/src/pairing/pairing.controller.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-192,194-205
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 193
+backend/coverage/lcov-report/src/devices/devices.controller.ts.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 304
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-303,305-316
+backend/coverage/lcov-report/src/devices/devices.module.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-102,104-115
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 103
+backend/coverage/lcov-report/src/auth/dto/login.dto.ts.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 100
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-99,101-112
+backend/coverage/lcov-report/src/common/decorators/current-device.decorator.ts.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 100
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-99,101-112
+backend/coverage/lcov-report/src/devices/devices.service.ts.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 430
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-429,431-442
+backend/coverage/lcov-report/src/app.module.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-192,194-205
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 193
+backend/coverage/lcov-report/src/app.controller.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-111,113-124
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 112
+backend/coverage/lcov-report/src/fcm/index.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 119
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-118,120-131
+backend/coverage/lcov-report/src/alerts/alerts.controller.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-210,212-223
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 211
+backend/coverage/lcov-report/src/policies/index.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 134
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-133,135-146
+backend/coverage/lcov-report/src/auth/auth.module.ts.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 133
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-132,134-145
+backend/coverage/lcov-report/src/prisma/prisma.module.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-99,101-112
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 100
+backend/coverage/lcov-report/src/tamper/dto/index.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-103,105-116
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 104
+backend/coverage/lcov-report/src/tamper/dto/report-tamper.dto.ts.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 118
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-117,119-130
+backend/coverage/lcov-report/src/tamper/tamper.service.ts.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 337
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-336,338-349
+backend/coverage/coverage-final.json
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-12,14-22,24-25,28-66
+  s_dc3fc204d3267d::t_8a8f7e30e17f3a 23,26-27
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 13
+backend/coverage/lcov-report/src/commands/commands.module.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-108,110-121
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 109
+backend/coverage/lcov-report/src/pairing/pairing.module.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-105,107-118
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 106
+backend/coverage/lcov-report/src/policies/policies.controller.ts.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 154
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-153,155-166
+backend/coverage/lcov-report/src/tamper/index.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-133,135-146
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 134
+backend/coverage/lcov-report/src/locations/index.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 134
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-133,135-146
+backend/coverage/lcov-report/src/pairing/dto/index.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 119
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-118,120-131
+backend/coverage/lcov-report/block-navigation.js
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-87
+backend/coverage/lcov-report/src/events/events.controller.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-195,197-208
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 196
+backend/coverage/lcov-report/src/events/index.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 134
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-133,135-146
+backend/coverage/lcov-report/src/common/guards/device-auth.guard.ts.html
+  s_dc3fc204d3267d::t_8a8f7e30e17f3a 26,28,33,35,40,42,47,49,64,104,110,113-116,121-122,125-127,130-131,135-136,138-139,142,148,150-154,159-160,162-165,168-169,173-174,176-177
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 187
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-25,27,29-32,34,36-39,41,43-46,48,50-63,65-103,105-109,111-112,117-120,123-124,128-129,132-134,137,140-141,143-147,149,155-158,161,166-167,170-172,175,178-186,188-199
+backend/coverage/lcov-report/src/heartbeat/heartbeat.service.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-333,335-346
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 334
+backend/src/common/guards/device-auth.guard.spec.ts
+  s_dc3fc204d3267d::t_7533356b94712a 1-50
+backend/coverage/lcov-report/src/policies/dto/update-policy.dto.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-120,122-133
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 121
+backend/coverage/lcov-report/src/auth/dto/register.dto.ts.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 115
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-114,116-127
+backend/coverage/lcov-report/prettify.js
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-2
+backend/coverage/lcov-report/src/policies/policies.module.ts.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 106
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-105,107-118
+backend/coverage/lcov-report/src/redis/index.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-118,120-131
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 119
+backend/coverage/lcov-report/src/commands/dto/command-result.dto.ts.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 106
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-105,107-118
+backend/coverage/lcov-report/sorter.js
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-210
+backend/coverage/lcov-report/src/config/index.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-103,105-116
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 104
+backend/coverage/lcov-report/src/auth/auth.controller.ts.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 241
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-240,242-253
+backend/coverage/lcov-report/src/devices/dto/update-device.dto.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-93,95-106
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 94
+backend/coverage/lcov-report/src/policies/dto/index.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 104
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-103,105-116
+backend/coverage/lcov-report/src/tamper/tamper.controller.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-204,206-217
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 205
+backend/coverage/lcov-report/src/devices/index.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-133,135-146
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 134
+backend/src/common/guards/jwt-auth.guard.spec.ts
+  s_dc3fc204d3267d::t_d3087d3bfe0d3f 1-66
+backend/coverage/lcov-report/src/locations/locations.controller.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-225,227-238
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 226
+backend/coverage/lcov-report/src/common/guards/index.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 119
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-25,27,29-32,34,36-39,41,43-46,48,50-63,65-81,85,94-96,100,109-118,120-131
+  s_dc3fc204d3267d::t_8a8f7e30e17f3a 26,28,33,35,40,42,47,49,64,82-84,86-93,97-99,101-108
+backend/coverage/lcov-report/src/common/guards/jwt-auth.guard.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-25,27,29-32,34,36-39,41,43-46,48,50-63,65-103,105-109,111-112,117-120,123-124,128-129,132,134,137,140-141,143-147,149,155-158,161,166-167,170,172,175,178-186,188-199
+  s_dc3fc204d3267d::t_8a8f7e30e17f3a 26,28,33,35,40,42,47,49,64,104,110,113-116,121-122,125-127,130-131,133,135-136,138-139,142,148,150-154,159-160,162-165,168-169,171,173-174,176-177
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 187
+backend/coverage/lcov-report/src/locations/dto/report-location.dto.ts.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 136
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-135,137-148
+backend/coverage/lcov-report/src/devices/dto/index.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 134
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-133,135-146
+backend/coverage/clover.xml
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1,5-131,133-206,221-357,372-391,393,408,413-414,434-1011
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 2-4,132,207-220
+  s_dc3fc204d3267d::t_8a8f7e30e17f3a 358-371,392,394-407,409-412,415-433
+backend/coverage/lcov-report/prettify.css
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1
+backend/coverage/lcov-report/src/common/decorators/current-user.decorator.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-99,101-112
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 100
+backend/coverage/lcov-report/src/auth/auth.service.ts.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 439
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-438,440-451
+backend/coverage/lcov-report/src/commands/dto/create-command.dto.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-120,122-133
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 121
+backend/coverage/lcov-report/src/common/decorators/index.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 119
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-118,120-131
+backend/coverage/lcov-report/src/common/index.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-103,105-116
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 104
+backend/coverage/lcov-report/src/heartbeat/dto/heartbeat.dto.ts.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 100
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-99,101-112
+backend/coverage/lcov-report/src/heartbeat/heartbeat.controller.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-147,149-160
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 148
+backend/coverage/lcov-report/src/events/events.module.ts.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 106
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-105,107-118
+backend/coverage/lcov-report/src/locations/locations.module.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-105,107-118
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 106
+backend/coverage/lcov-report/src/devices/dto/device-self-update.dto.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-135,137-148
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 136
+backend/coverage/lcov-report/src/main.ts.html
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 124
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-123,125-136
+backend/coverage/lcov-report/src/prisma/prisma.service.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-99,101-112
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 100
+backend/coverage/lcov-report/src/auth/dto/fcm-token.dto.ts.html
+  s_dc3fc204d3267d::t_b9deb78fad5b5e 1-93,95-106
+  s_dc3fc204d3267d::t_d585c82cfa2b3b 94
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "c62396c1e3f7198f4196ee645115fc52be5cc246",
+  "prompts": {},
+  "sessions": {
+    "s_dc3fc204d3267d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fb8ab451-0be6-4c27-8edd-e731427d9e1b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Suhaib <suhaibking310@gmail.com>"
+    }
+  }
+}
