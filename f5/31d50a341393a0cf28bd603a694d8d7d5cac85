@@ -1,0 +1,35 @@
+backend/src/fcm/fcm.module.ts
+  s_dc3fc204d3267d::t_cfb63130876887 1-9
+backend/src/app.module.ts
+  s_dc3fc204d3267d::t_cc0cba507527ef 7,9,20,24
+backend/src/commands/commands.controller.ts
+  s_dc3fc204d3267d::t_b431a8e837f7be 1-75
+backend/src/commands/commands.module.ts
+  s_dc3fc204d3267d::t_08ea121299bf10 1-11
+backend/src/commands/dto/command-result.dto.ts
+  s_dc3fc204d3267d::t_4e137254d28a7a 1-11
+backend/src/commands/dto/create-command.dto.ts
+  s_dc3fc204d3267d::t_69917547e71228 1-16
+backend/src/commands/commands.service.spec.ts
+  s_dc3fc204d3267d::t_c7ec4ce563937b 1-167
+backend/src/commands/commands.service.ts
+  s_dc3fc204d3267d::t_545c0715ff8c89 1-164
+backend/src/fcm/fcm.service.ts
+  s_dc3fc204d3267d::t_db300b03788d87 1-65
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "f531d50a341393a0cf28bd603a694d8d7d5cac85",
+  "prompts": {},
+  "sessions": {
+    "s_dc3fc204d3267d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fb8ab451-0be6-4c27-8edd-e731427d9e1b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Suhaib <suhaibking310@gmail.com>"
+    }
+  }
+}
