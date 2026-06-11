@@ -1,0 +1,59 @@
+backend/src/tamper/tamper.module.ts
+  s_dc3fc204d3267d::t_6f7887e7170a0c 1-12
+backend/src/locations/locations.module.ts
+  s_dc3fc204d3267d::t_fc07ad3a57ed34 1-11
+backend/src/heartbeat/heartbeat.service.ts
+  s_dc3fc204d3267d::t_7c25486ac0d60f 1-87
+backend/src/heartbeat/heartbeat.controller.ts
+  s_dc3fc204d3267d::t_c2a13e57fa5721 1-25
+backend/src/events/dto/ingest-events.dto.ts
+  s_dc3fc204d3267d::t_9fc9f9ea48c14e 1-29
+backend/src/events/events.service.spec.ts
+  s_dc3fc204d3267d::t_572aaff49cff08 1-58
+backend/src/locations/locations.controller.ts
+  s_dc3fc204d3267d::t_60211d41e469c1 1-51
+backend/src/locations/locations.service.spec.ts
+  s_dc3fc204d3267d::t_289a31f3486a43 1-55
+backend/src/events/events.controller.ts
+  s_dc3fc204d3267d::t_b5052687404f87 1-41
+backend/src/events/events.module.ts
+  s_dc3fc204d3267d::t_8c0ebcdc31a93e 1-11
+backend/src/heartbeat/dto/heartbeat.dto.ts
+  s_dc3fc204d3267d::t_65c78a8fbc2716 1-9
+backend/src/locations/dto/report-location.dto.ts
+  s_dc3fc204d3267d::t_470e8dd4fb6736 1-21
+backend/src/events/events.service.ts
+  s_dc3fc204d3267d::t_dc25d119566cbe 1-46
+backend/src/locations/locations.service.ts
+  s_dc3fc204d3267d::t_96049023fc6b4e 1-50
+backend/src/app.module.ts
+  s_dc3fc204d3267d::t_704490e3a7ccb6 10,12-13,18,33-36
+backend/src/tamper/tamper.service.ts
+  s_dc3fc204d3267d::t_e03e60cdcac2ec 1-88
+backend/src/tamper/dto/report-tamper.dto.ts
+  s_dc3fc204d3267d::t_e6cae3a2912192 1-15
+backend/src/heartbeat/heartbeat.module.ts
+  s_dc3fc204d3267d::t_e6487875e1b642 1-11
+backend/src/tamper/tamper.controller.ts
+  s_dc3fc204d3267d::t_d48ed2d8b8e400 1-44
+backend/src/heartbeat/heartbeat.service.spec.ts
+  s_dc3fc204d3267d::t_f69798499aaf26 1-82
+backend/src/tamper/tamper.service.spec.ts
+  s_dc3fc204d3267d::t_4f2244f2151334 1-65
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "5bb7b8ec57707c4d16891047a2dfb15f22730de6",
+  "prompts": {},
+  "sessions": {
+    "s_dc3fc204d3267d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fb8ab451-0be6-4c27-8edd-e731427d9e1b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Suhaib <suhaibking310@gmail.com>"
+    }
+  }
+}
