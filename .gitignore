@@ -21,6 +21,7 @@ build/
 # Node / backend
 node_modules/
 dist/
+coverage/
 backend/.env
 
 # Flutter / parent app
