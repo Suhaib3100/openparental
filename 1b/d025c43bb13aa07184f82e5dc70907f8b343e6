@@ -1,0 +1,67 @@
+README.md
+  s_29cf327f8923c4::t_ad09e5dc13a3ed 1-72,74,77-88,91-94,96,98,100-107,109,111-112,114,117-120,122-123,125,127-132,134,136,138-167
+android-managed/app/src/main/kotlin/app/monii/managed/MoniiApp.kt
+  s_dc3fc204d3267d::t_4054541f60e9e7 4,7,15-20
+android-managed/build.gradle.kts
+  s_dc3fc204d3267d::t_c71944c3db40be 5
+.github/ISSUE_TEMPLATE/bug_report.yml
+  s_29cf327f8923c4::t_f9e7fbebe44a69 1-42
+.gitignore
+  s_29cf327f8923c4::t_57569041480d16 44-47
+.github/PULL_REQUEST_TEMPLATE.md
+  s_29cf327f8923c4::t_74cdfb80e53844 1,3,5,7,9,11,13-16,18,20-23
+android-managed/gradle.properties
+  s_dc3fc204d3267d::t_53b05139fc768c 6
+.github/ISSUE_TEMPLATE/feature_request.yml
+  s_29cf327f8923c4::t_d059590e6ddfb5 1-24
+CONTRIBUTING.md
+  s_29cf327f8923c4::t_b0dbadc9c9b6fa 1-56
+android-managed/app/src/main/kotlin/app/monii/managed/repo/MoniiRepository.kt
+  s_dc3fc204d3267d::t_f68dfefd60369c 17
+  s_dc3fc204d3267d::t_7bd7b6986b4f8d 44,55-69
+android-managed/app/src/main/kotlin/app/monii/managed/fcm/MoniiFcmService.kt
+  s_dc3fc204d3267d::t_a3ba6a84d4e8b5 1-6,9-12,14-22
+android-managed/app/src/main/kotlin/app/monii/managed/identity/DeviceStore.kt
+  s_dc3fc204d3267d::t_73566bac3dd647 40-52
+android-managed/app/src/main/AndroidManifest.xml
+  s_dc3fc204d3267d::t_98bb363836d56b 104-112
+SECURITY.md
+  s_29cf327f8923c4::t_7b73337397715a 1,3-4,6,8-39
+.github/ISSUE_TEMPLATE/oem_survival_report.yml
+  s_29cf327f8923c4::t_0cf07e3081c750 1-38
+LICENSE
+  s_29cf327f8923c4::t_f9f74343f7e0b3 3
+android-managed/app/src/main/kotlin/app/monii/managed/sync/SyncScheduler.kt
+  s_dc3fc204d3267d::t_d45854b24ee7e7 7,15-17,20,28-34
+android-managed/app/build.gradle.kts
+  s_dc3fc204d3267d::t_85676dd396a40b 4
+  s_dc3fc204d3267d::t_95b2776d2b02fa 55-58
+android-managed/app/src/main/kotlin/app/monii/managed/supervisor/SupervisorService.kt
+  s_dc3fc204d3267d::t_06c97ec3df62d1 89
+CODE_OF_CONDUCT.md
+  s_29cf327f8923c4::t_f2fbc98dbf3322 1,3,5-10,12-13,15,17,19-23,25-49
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "1bd025c43bb13aa07184f82e5dc70907f8b343e6",
+  "prompts": {},
+  "sessions": {
+    "s_29cf327f8923c4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93c7f6f4-61cb-4730-86cb-63547aab020f",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Suhaib <suhaibking310@gmail.com>"
+    },
+    "s_dc3fc204d3267d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fb8ab451-0be6-4c27-8edd-e731427d9e1b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Suhaib <suhaibking310@gmail.com>"
+    }
+  }
+}
