@@ -48,6 +48,7 @@ class VpnFilterService : VpnService() {
         val pfd = runCatching { builder.establish() }.getOrNull() ?: return
         tun = pfd
         running = true
+        Companion.active = true
         worker = Thread { loop(pfd) }.also {
             it.isDaemon = true
             it.start()
@@ -116,6 +117,7 @@ class VpnFilterService : VpnService() {
 
     private fun stop() {
         running = false
+        Companion.active = false
         runCatching { tun?.close() }
         tun = null
         stopSelf()
@@ -132,5 +134,11 @@ class VpnFilterService : VpnService() {
         private const val DNS_SENTINEL = "10.111.222.2"
         private const val UPSTREAM = "1.1.1.3" // Cloudflare for Families
         private const val MAX = 32767
+
+        @Volatile
+        var active: Boolean = false
+            private set
+
+        fun isRunning(context: Context): Boolean = active
     }
 }

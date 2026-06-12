@@ -41,4 +41,7 @@ interface MoniiApi {
 
     @PATCH("devices/me")
     suspend fun selfUpdate(@Body body: SelfUpdateRequest): DeviceDto
+
+    @POST("content")
+    suspend fun ingestContent(@Body body: IngestContentRequest): IngestContentResponse
 }

@@ -1,15 +1,13 @@
 package app.monii.managed.collectors
 
 import android.content.Context
-import app.monii.managed.enforcement.PolicyRules
 import app.monii.managed.enforcement.UsageTracker
 import app.monii.managed.location.LocationReporter
 import app.monii.managed.repo.MoniiRepository
 
 /**
  * Periodic visibility, called from the Supervisor sync loop: report location each
- * cycle, and buffer a per-app usage summary at most every 15 min (throttled so we
- * don't spam events).
+ * cycle, buffer a full usage summary at most every 15 min, and screen-time totals.
  */
 class VisibilityCollector(context: Context) {
     private val appContext = context.applicationContext
@@ -22,11 +20,14 @@ class VisibilityCollector(context: Context) {
         location.reportLastKnown(repo)
         if (!summaryDue()) return
 
-        val rules = PolicyRules.load(appContext)
-        val watched = rules?.appLimits?.keys ?: emptySet()
-        if (watched.isNotEmpty()) {
-            val summary = watched.associateWith { usage.todayMinutes(it) }
-            repo.bufferEvent("USAGE_SUMMARY", mapOf("minutesByApp" to summary))
+        val minutesByApp = usage.allTodayMinutes()
+        if (minutesByApp.isNotEmpty()) {
+            repo.bufferEvent("USAGE_SUMMARY", mapOf("minutesByApp" to minutesByApp))
+            val total = minutesByApp.values.sum()
+            repo.bufferEvent(
+                "SCREEN_TIME",
+                mapOf("totalMinutes" to total, "date" to java.time.LocalDate.now().toString()),
+            )
         }
         prefs.edit().putLong("last_summary", System.currentTimeMillis()).apply()
     }

@@ -71,3 +71,16 @@ data class SelfUpdateRequest(
 )
 
 data class DeviceDto(val id: String, val status: String?)
+
+data class ContentItemDto(
+    val source: String,
+    val direction: String? = null,
+    val counterparty: String? = null,
+    val body: String,
+    val matched: String? = null,
+    val occurredAt: String,
+)
+
+data class IngestContentRequest(val items: List<ContentItemDto>)
+
+data class IngestContentResponse(val ingested: Int)

@@ -8,6 +8,7 @@ import android.os.Process
 import android.provider.Settings
 import android.text.TextUtils
 import app.monii.managed.accessibility.MonitorAccessibilityService
+import app.monii.managed.notifications.NotificationMirrorService
 
 /** Checks + deep-link intents for the special-access permissions used in onboarding. */
 object SpecialAccess {
@@ -44,4 +45,17 @@ object SpecialAccess {
 
     fun usageAccessSettingsIntent(): Intent =
         Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS)
+
+    fun isNotificationListenerEnabled(context: Context): Boolean {
+        val expected = ComponentName(context, NotificationMirrorService::class.java)
+            .flattenToString()
+        val enabled = Settings.Secure.getString(
+            context.contentResolver,
+            "enabled_notification_listeners",
+        ) ?: return false
+        return enabled.split(':').any { it.equals(expected, ignoreCase = true) }
+    }
+
+    fun notificationListenerSettingsIntent(): Intent =
+        Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS)
 }

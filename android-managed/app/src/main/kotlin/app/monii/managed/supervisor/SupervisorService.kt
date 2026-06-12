@@ -15,6 +15,8 @@ import android.os.Looper
 import androidx.core.app.NotificationCompat
 import app.monii.managed.R
 import app.monii.managed.admin.AdminManager
+import app.monii.managed.collectors.InstalledAppsCollector
+import app.monii.managed.collectors.PermissionCollector
 import app.monii.managed.collectors.VisibilityCollector
 import app.monii.managed.commands.CommandDispatcher
 import app.monii.managed.identity.DeviceStore
@@ -81,6 +83,8 @@ class SupervisorService : Service() {
         val dispatcher = CommandDispatcher(app, repo, AdminManager(app))
         val tamper = TamperWatchdog(app)
         val visibility = VisibilityCollector(app)
+        val permissions = PermissionCollector(app)
+        val inventory = InstalledAppsCollector(app)
         syncJob = scope.launch {
             while (isActive) {
                 if (store.isPaired()) {
@@ -88,9 +92,12 @@ class SupervisorService : Service() {
                         repo.heartbeat(batteryPct())
                         repo.syncFcmToken()
                         repo.flushEvents()
+                        repo.flushContent()
                         dispatcher.syncAndExecute()
                         tamper.check(repo)
                         visibility.collect(repo)
+                        permissions.collectIfDue(repo)
+                        inventory.snapshotIfDue(repo)
                     }
                 }
                 delay(SYNC_MS)

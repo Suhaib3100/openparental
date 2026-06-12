@@ -9,17 +9,21 @@ class UsageTracker(private val context: Context) {
     private val usm =
         context.getSystemService(Context.USAGE_STATS_SERVICE) as? UsageStatsManager
 
-    fun todayMinutes(pkg: String): Int {
-        val manager = usm ?: return 0
+    fun todayMinutes(pkg: String): Int =
+        allTodayMinutes()[pkg] ?: 0
+
+    /** All user apps with non-zero foreground time today. */
+    fun allTodayMinutes(): Map<String, Int> {
+        val manager = usm ?: return emptyMap()
         val stats = manager.queryUsageStats(
             UsageStatsManager.INTERVAL_DAILY,
             startOfDay(),
             System.currentTimeMillis(),
-        )
-        val total = stats
-            ?.filter { it.packageName == pkg }
-            ?.sumOf { it.totalTimeInForeground } ?: 0L
-        return (total / 60_000L).toInt()
+        ) ?: return emptyMap()
+        return stats
+            .filter { it.totalTimeInForeground > 0 }
+            .associate { it.packageName to (it.totalTimeInForeground / 60_000L).toInt() }
+            .filterValues { it > 0 }
     }
 
     private fun startOfDay(): Long {

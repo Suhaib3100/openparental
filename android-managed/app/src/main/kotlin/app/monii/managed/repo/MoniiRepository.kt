@@ -2,6 +2,7 @@ package app.monii.managed.repo
 
 import android.content.Context
 import android.os.Build
+import app.monii.managed.data.ContentBuffer
 import app.monii.managed.data.EventBuffer
 import app.monii.managed.identity.DeviceStore
 import app.monii.managed.net.ApiProvider
@@ -9,8 +10,10 @@ import app.monii.managed.net.ClaimRequest
 import app.monii.managed.net.ClaimResponse
 import app.monii.managed.net.CommandDto
 import app.monii.managed.net.CommandResultRequest
+import app.monii.managed.net.ContentItemDto
 import app.monii.managed.net.EventInputDto
 import app.monii.managed.net.HeartbeatRequest
+import app.monii.managed.net.IngestContentRequest
 import app.monii.managed.net.IngestEventsRequest
 import app.monii.managed.net.LocationRequest
 import app.monii.managed.net.ReauthRequest
@@ -30,6 +33,7 @@ class MoniiRepository(
 ) {
     private val api get() = ApiProvider.api(store)
     private val buffer = EventBuffer(context)
+    private val contentBuffer = ContentBuffer(context)
 
     suspend fun claim(baseUrl: String, code: String): ClaimResponse {
         store.setBaseUrl(baseUrl)
@@ -86,6 +90,10 @@ class MoniiRepository(
         buffer.add(EventInputDto(type, data, Instant.now().toString()))
     }
 
+    fun bufferContent(item: ContentItemDto) {
+        contentBuffer.add(item)
+    }
+
     suspend fun flushEvents() {
         val items = buffer.drainAndClear()
         if (items.isEmpty()) return
@@ -93,6 +101,17 @@ class MoniiRepository(
             withReauth { api.ingestEvents(IngestEventsRequest(items)) }
         } catch (e: Exception) {
             buffer.readd(items)
+            throw e
+        }
+    }
+
+    suspend fun flushContent() {
+        val items = contentBuffer.drainAndClear()
+        if (items.isEmpty()) return
+        try {
+            withReauth { api.ingestContent(IngestContentRequest(items)) }
+        } catch (e: Exception) {
+            contentBuffer.readd(items)
             throw e
         }
     }
