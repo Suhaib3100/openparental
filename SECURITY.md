@@ -36,4 +36,4 @@ Especially interested in:
 
 | Version | Supported |
 |---|---|
-| `master` | ✅ |
+| `main` | ✅ |

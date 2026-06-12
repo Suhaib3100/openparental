@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [master, 'Suhaib3100/**']
+    branches: [main, 'Suhaib3100/**']
   pull_request:
 
 jobs:
