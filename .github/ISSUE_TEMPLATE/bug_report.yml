@@ -1,0 +1,42 @@
+name: 🐛 Bug report
+description: Something isn't working
+labels: [bug]
+body:
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      options:
+        - backend
+        - android-managed (child app)
+        - app-parent (parent app)
+        - CI / other
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Pair a device
+        2. Send Lock
+        3. ...
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Device / environment
+      placeholder: "e.g. Redmi Note 13 (MIUI 14, Android 14), backend on macOS"
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      render: shell

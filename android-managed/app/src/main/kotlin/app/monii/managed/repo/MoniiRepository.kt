@@ -14,6 +14,7 @@ import app.monii.managed.net.HeartbeatRequest
 import app.monii.managed.net.IngestEventsRequest
 import app.monii.managed.net.LocationRequest
 import app.monii.managed.net.ReauthRequest
+import app.monii.managed.net.SelfUpdateRequest
 import app.monii.managed.net.TamperRequest
 import retrofit2.HttpException
 import java.time.Instant
@@ -40,6 +41,7 @@ class MoniiRepository(
                 model = Build.MODEL,
                 osVersion = Build.VERSION.RELEASE,
                 appVersion = APP_VERSION,
+                fcmToken = store.fcmToken(),
             ),
         )
         store.savePairing(res.deviceId, res.deviceToken, res.deviceSecret)
@@ -48,6 +50,23 @@ class MoniiRepository(
 
     suspend fun heartbeat(batteryPct: Int?) = withReauth {
         api.heartbeat(HeartbeatRequest(batteryPct))
+    }
+
+    /** Push the FCM token up once it's known (and after any rotation). */
+    suspend fun syncFcmToken() {
+        if (!store.fcmNeedsSync()) return
+        val token = store.fcmToken() ?: return
+        withReauth {
+            api.selfUpdate(
+                SelfUpdateRequest(
+                    batteryPct = null,
+                    osVersion = null,
+                    appVersion = null,
+                    fcmToken = token,
+                ),
+            )
+        }
+        store.markFcmSynced()
     }
 
     suspend fun pullCommands(): List<CommandDto> = withReauth { api.pendingCommands() }

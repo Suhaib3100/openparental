@@ -1,0 +1,24 @@
+name: 💡 Feature request
+description: Suggest an idea
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: Describe the parent/child scenario, not just the feature.
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+    validations:
+      required: true
+  - type: checkboxes
+    id: overt
+    attributes:
+      label: Design constraint
+      options:
+        - label: This feature is fully visible to the child (no covert surveillance — see the README's "Why monii?")
+          required: true

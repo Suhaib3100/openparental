@@ -1,0 +1,38 @@
+name: 📱 OEM survival report
+description: Report whether the child app's foreground service survived on your device
+labels: [oem-survival]
+body:
+  - type: input
+    id: device
+    attributes:
+      label: Device + ROM
+      placeholder: "e.g. Xiaomi Redmi Note 13, MIUI 14 (Android 14)"
+    validations:
+      required: true
+  - type: dropdown
+    id: survived
+    attributes:
+      label: Did the service survive overnight (screen off, unplugged)?
+      options:
+        - "Yes — heartbeats stayed fresh"
+        - "Partially — watchdog restarts > 0 but it recovered"
+        - "No — went dark until reopened"
+    validations:
+      required: true
+  - type: checkboxes
+    id: settings
+    attributes:
+      label: Settings granted
+      options:
+        - label: Unrestricted battery
+        - label: Autostart (OEM-specific)
+        - label: Accessibility service enabled
+  - type: textarea
+    id: counters
+    attributes:
+      label: Counters
+      placeholder: |
+        Service starts: …
+        Watchdog restarts: …
+        Boot restarts: …
+        Last heartbeat: …

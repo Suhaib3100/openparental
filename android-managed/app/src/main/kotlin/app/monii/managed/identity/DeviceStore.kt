@@ -37,6 +37,19 @@ class DeviceStore(context: Context) {
             .apply()
     }
 
+    fun fcmToken(): String? = prefs.getString("fcm_token", null)
+
+    fun setFcmToken(token: String) {
+        if (token != fcmToken()) {
+            prefs.edit().putString("fcm_token", token).putBoolean("fcm_needs_sync", true).apply()
+        }
+    }
+
+    fun fcmNeedsSync(): Boolean =
+        prefs.getBoolean("fcm_needs_sync", false) && fcmToken() != null
+
+    fun markFcmSynced() = prefs.edit().putBoolean("fcm_needs_sync", false).apply()
+
     companion object {
         private const val PREFS = "monii_identity"
 

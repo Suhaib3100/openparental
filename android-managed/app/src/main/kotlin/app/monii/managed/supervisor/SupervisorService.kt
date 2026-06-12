@@ -86,6 +86,7 @@ class SupervisorService : Service() {
                 if (store.isPaired()) {
                     runCatching {
                         repo.heartbeat(batteryPct())
+                        repo.syncFcmToken()
                         repo.flushEvents()
                         dispatcher.syncAndExecute()
                         tamper.check(repo)

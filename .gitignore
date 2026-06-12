@@ -41,3 +41,7 @@ android-managed/app/google-services.json
 backend/fcm-service-account.json
 **/*firebase-adminsdk*.json
 **/google-services.json
+
+# Local AI tooling — not part of the project
+.claude/
+.context/
