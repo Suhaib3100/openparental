@@ -1,0 +1,19 @@
+app-parent/android/.gitignore
+  s_29cf327f8923c4::t_5b29b9b59cc360 15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "03e9181aa672c844dcdbbd38cc6c6ba50e6a8381",
+  "prompts": {},
+  "sessions": {
+    "s_29cf327f8923c4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93c7f6f4-61cb-4730-86cb-63547aab020f",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Suhaib <suhaibking310@gmail.com>"
+    }
+  }
+}
