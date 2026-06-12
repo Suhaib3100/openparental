@@ -29,10 +29,12 @@ class _UsageReportScreenState extends ConsumerState<UsageReportScreen> {
     setState(() => _loading = true);
     try {
       final r = await ref.read(apiProvider).usageReport(widget.device.id);
-      if (mounted) setState(() {
-        _report = r;
-        _loading = false;
-      });
+      if (mounted) {
+        setState(() {
+          _report = r;
+          _loading = false;
+        });
+      }
     } catch (_) {
       if (mounted) setState(() => _loading = false);
     }

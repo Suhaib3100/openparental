@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../api/models.dart';
 import '../features/monii_features.dart';
 import '../theme/app_theme.dart';
-import '../widgets/ui.dart';
 import '../screens/alerts_requests_screen.dart';
 import '../screens/blocked_apps_screen.dart';
 import '../screens/check_permissions_screen.dart';

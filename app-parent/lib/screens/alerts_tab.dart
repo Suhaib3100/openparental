@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../api/models.dart';
 import '../features/monii_features.dart';
 import '../navigation/feature_navigator.dart';
 import '../state/providers.dart';
@@ -23,8 +22,10 @@ class AlertsTab extends ConsumerWidget {
       header: const Row(children: [Expanded(child: HeaderTitle('Notice'))]),
       body: RefreshIndicator(
         onRefresh: () async {
-          await ref.refresh(devicesProvider.future);
-          await ref.refresh(alertsProvider.future);
+          ref.invalidate(devicesProvider);
+          ref.invalidate(alertsProvider);
+          await ref.read(devicesProvider.future);
+          await ref.read(alertsProvider.future);
         },
         child: devicesAsync.when(
           loading: () => const Center(child: CircularProgressIndicator()),

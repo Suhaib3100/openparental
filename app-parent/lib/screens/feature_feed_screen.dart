@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intl/intl.dart';
 
 import '../api/models.dart';
 import '../features/monii_features.dart';
@@ -99,10 +98,12 @@ class _FeatureFeedScreenState extends ConsumerState<FeatureFeedScreen> {
         }
       }
     } catch (_) {}
-    if (mounted) setState(() {
-      _rows = rows;
-      _loading = false;
-    });
+    if (mounted) {
+      setState(() {
+        _rows = rows;
+        _loading = false;
+      });
+    }
   }
 
   bool get _usesEvents =>

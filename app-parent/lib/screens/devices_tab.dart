@@ -5,7 +5,6 @@ import '../api/models.dart';
 import '../features/monii_features.dart';
 import '../navigation/feature_navigator.dart';
 import '../state/providers.dart';
-import '../theme/app_theme.dart';
 import '../theme/status.dart';
 import '../widgets/device_card.dart';
 import '../widgets/device_dashboard.dart';
@@ -222,7 +221,8 @@ class _DevicesTabState extends ConsumerState<DevicesTab> {
           ),
           body: RefreshIndicator(
             onRefresh: () async {
-              await ref.refresh(devicesProvider.future);
+              ref.invalidate(devicesProvider);
+              await ref.read(devicesProvider.future);
               await _loadPolicy();
             },
             child: ListView(

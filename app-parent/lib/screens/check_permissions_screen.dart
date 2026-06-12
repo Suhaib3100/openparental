@@ -42,10 +42,12 @@ class _CheckPermissionsScreenState extends ConsumerState<CheckPermissionsScreen>
     setState(() => _loading = true);
     try {
       final s = await ref.read(apiProvider).devicePermissions(widget.device.id);
-      if (mounted) setState(() {
-        _snapshot = s;
-        _loading = false;
-      });
+      if (mounted) {
+        setState(() {
+          _snapshot = s;
+          _loading = false;
+        });
+      }
     } catch (_) {
       if (mounted) setState(() => _loading = false);
     }
