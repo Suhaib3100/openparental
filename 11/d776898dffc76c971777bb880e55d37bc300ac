@@ -1,0 +1,49 @@
+android-managed/app/src/main/kotlin/app/monii/managed/enforcement/UsageTracker.kt
+  s_b8f7e9adcfff54::t_9d3a6a35e3c2d1 12-17,22-26
+android-managed/app/src/main/kotlin/app/monii/managed/net/MoniiApi.kt
+  s_b8f7e9adcfff54::t_63a9e7b5ef172a 44-46
+android-managed/app/src/main/kotlin/app/monii/managed/data/ContentBuffer.kt
+  s_b8f7e9adcfff54::t_842d12c11664b6 1-37
+android-managed/app/src/main/kotlin/app/monii/managed/permissions/SpecialAccess.kt
+  s_b8f7e9adcfff54::t_7a707a2d0d884a 11
+  s_b8f7e9adcfff54::t_e68e491beaf982 50
+  s_b8f7e9adcfff54::t_cbbd8e14aaefb3 48-49,51-60
+android-managed/app/src/main/kotlin/app/monii/managed/collectors/PermissionCollector.kt
+  s_b8f7e9adcfff54::t_16c749da9e4bbe 4
+  s_b8f7e9adcfff54::t_00b29381a8ac5f 1-3,5-86
+android-managed/app/src/main/kotlin/app/monii/managed/repo/MoniiRepository.kt
+  s_b8f7e9adcfff54::t_cef871d8f08672 5,13,16,36,93-96,108-114
+android-managed/app/src/main/kotlin/app/monii/managed/vpn/VpnFilterService.kt
+  s_b8f7e9adcfff54::t_cd256625a63c99 120
+  s_b8f7e9adcfff54::t_cf5c36d31e950f 51
+  s_b8f7e9adcfff54::t_f0bbb8092dd493 137-142
+android-managed/app/src/main/kotlin/app/monii/managed/notifications/NotificationMirrorService.kt
+  s_b8f7e9adcfff54::t_12587f47322ba5 1-37
+android-managed/app/src/main/kotlin/app/monii/managed/supervisor/SupervisorService.kt
+  s_b8f7e9adcfff54::t_4c71f3f76672bf 18-19
+  s_b8f7e9adcfff54::t_92bb78c98c421d 86-87,95,99-100
+android-managed/app/src/main/AndroidManifest.xml
+  s_b8f7e9adcfff54::t_607abd1428bb22 117-126
+android-managed/app/src/main/kotlin/app/monii/managed/collectors/VisibilityCollector.kt
+  s_b8f7e9adcfff54::t_74c354efa84206 10,23-30
+android-managed/app/src/main/kotlin/app/monii/managed/net/Dtos.kt
+  s_b8f7e9adcfff54::t_e1ecb074d3a283 74-86
+android-managed/app/src/main/kotlin/app/monii/managed/accessibility/MonitorAccessibilityService.kt
+  s_b8f7e9adcfff54::t_62ca061ced2c77 5,7-11,14-15,20-32,35-92
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "11d776898dffc76c971777bb880e55d37bc300ac",
+  "prompts": {},
+  "sessions": {
+    "s_b8f7e9adcfff54": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "65c74276-6ca2-4c64-bc47-5ca140cb74cd",
+        "model": "composer-2.5"
+      },
+      "human_author": "Suhaib <suhaibking310@gmail.com>"
+    }
+  }
+}
