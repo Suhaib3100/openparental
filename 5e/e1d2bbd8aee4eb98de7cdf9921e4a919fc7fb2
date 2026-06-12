@@ -1,0 +1,33 @@
+android-managed/app/src/main/kotlin/app/monii/managed/ui/OnboardingActivity.kt
+  s_dc3fc204d3267d::t_ab3453cc5e153b 7
+  s_dc3fc204d3267d::t_0adb98a733a9cd 43-47
+  s_dc3fc204d3267d::t_ab946d131a8e74 19
+  s_dc3fc204d3267d::t_efb2005aaef515 87-92
+  s_dc3fc204d3267d::t_5d772ed6625c52 139-147
+android-managed/app/src/main/kotlin/app/monii/managed/vpn/IpUtil.kt
+  s_dc3fc204d3267d::t_46e49cde69f8bb 1-62
+android-managed/app/src/main/kotlin/app/monii/managed/vpn/DnsFilter.kt
+  s_dc3fc204d3267d::t_4322fc876f0c8e 1-36
+android-managed/app/src/main/AndroidManifest.xml
+  s_dc3fc204d3267d::t_2fabef19aab59f 117-126
+android-managed/app/src/main/kotlin/app/monii/managed/vpn/DomainBlocklist.kt
+  s_dc3fc204d3267d::t_2f48d392ec56f7 1-36
+android-managed/app/src/main/kotlin/app/monii/managed/vpn/VpnFilterService.kt
+  s_dc3fc204d3267d::t_9e6cd9e967031c 1-136
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "5ee1d2bbd8aee4eb98de7cdf9921e4a919fc7fb2",
+  "prompts": {},
+  "sessions": {
+    "s_dc3fc204d3267d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fb8ab451-0be6-4c27-8edd-e731427d9e1b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Suhaib <suhaibking310@gmail.com>"
+    }
+  }
+}
