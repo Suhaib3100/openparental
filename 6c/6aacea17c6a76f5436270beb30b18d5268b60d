@@ -1,0 +1,29 @@
+android-managed/app/src/main/kotlin/app/monii/managed/receivers/PackageEventReceiver.kt
+  s_dc3fc204d3267d::t_01cae69c4e5e5b 1-26
+android-managed/app/src/main/kotlin/app/monii/managed/location/LocationReporter.kt
+  s_dc3fc204d3267d::t_2d469c899961f0 1-38
+android-managed/app/src/main/kotlin/app/monii/managed/collectors/VisibilityCollector.kt
+  s_dc3fc204d3267d::t_85e49bbfb0c890 1-38
+android-managed/app/src/main/AndroidManifest.xml
+  s_dc3fc204d3267d::t_c1e0119e3bf408 19-21
+  s_dc3fc204d3267d::t_d3bf0374c01185 93-103
+android-managed/app/src/main/kotlin/app/monii/managed/supervisor/SupervisorService.kt
+  s_dc3fc204d3267d::t_c9a8aafe180415 83,92
+  s_dc3fc204d3267d::t_7294634359dd50 18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "6c6aacea17c6a76f5436270beb30b18d5268b60d",
+  "prompts": {},
+  "sessions": {
+    "s_dc3fc204d3267d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fb8ab451-0be6-4c27-8edd-e731427d9e1b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Suhaib <suhaibking310@gmail.com>"
+    }
+  }
+}
