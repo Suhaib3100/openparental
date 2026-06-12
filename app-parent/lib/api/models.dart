@@ -129,3 +129,116 @@ class DeviceLocation {
             : null,
       );
 }
+
+class DeviceEvent {
+  final String id;
+  final String type;
+  final Map<String, dynamic> data;
+  final DateTime? occurredAt;
+
+  DeviceEvent({
+    required this.id,
+    required this.type,
+    required this.data,
+    this.occurredAt,
+  });
+
+  factory DeviceEvent.fromJson(Map<String, dynamic> j) => DeviceEvent(
+        id: j['id'] as String,
+        type: j['type'] as String,
+        data: (j['data'] as Map<String, dynamic>?) ?? {},
+        occurredAt: j['occurredAt'] != null
+            ? DateTime.tryParse(j['occurredAt'] as String)
+            : null,
+      );
+}
+
+class ContentItem {
+  final String id;
+  final String source;
+  final String? counterparty;
+  final String body;
+  final String? matched;
+  final DateTime? occurredAt;
+
+  ContentItem({
+    required this.id,
+    required this.source,
+    this.counterparty,
+    required this.body,
+    this.matched,
+    this.occurredAt,
+  });
+
+  factory ContentItem.fromJson(Map<String, dynamic> j) => ContentItem(
+        id: j['id'] as String,
+        source: j['source'] as String,
+        counterparty: j['counterparty'] as String?,
+        body: j['body'] as String? ?? '',
+        matched: j['matched'] as String?,
+        occurredAt: j['occurredAt'] != null
+            ? DateTime.tryParse(j['occurredAt'] as String)
+            : null,
+      );
+}
+
+class UsageReport {
+  final int totalMinutes;
+  final Map<String, int> minutesByApp;
+  final DateTime? updatedAt;
+  final String? topPackage;
+  final int? topMinutes;
+
+  UsageReport({
+    required this.totalMinutes,
+    required this.minutesByApp,
+    this.updatedAt,
+    this.topPackage,
+    this.topMinutes,
+  });
+
+  factory UsageReport.fromJson(Map<String, dynamic> j) {
+    final raw = j['minutesByApp'] as Map<String, dynamic>? ?? {};
+    final byApp = raw.map((k, v) => MapEntry(k, (v as num).toInt()));
+    final top = j['topApp'] as Map<String, dynamic>?;
+    return UsageReport(
+      totalMinutes: (j['totalMinutes'] as num?)?.toInt() ?? 0,
+      minutesByApp: byApp,
+      updatedAt: j['updatedAt'] != null
+          ? DateTime.tryParse(j['updatedAt'] as String)
+          : null,
+      topPackage: top?['package'] as String?,
+      topMinutes: (top?['minutes'] as num?)?.toInt(),
+    );
+  }
+}
+
+class PermissionSnapshot {
+  final Map<String, bool> permissions;
+  final DateTime? updatedAt;
+
+  PermissionSnapshot({required this.permissions, this.updatedAt});
+
+  factory PermissionSnapshot.fromJson(Map<String, dynamic> j) {
+    final raw = j['permissions'] as Map<String, dynamic>?;
+    final perms = raw?.map((k, v) => MapEntry(k, v == true)) ?? {};
+    return PermissionSnapshot(
+      permissions: perms,
+      updatedAt: j['updatedAt'] != null
+          ? DateTime.tryParse(j['updatedAt'] as String)
+          : null,
+    );
+  }
+}
+
+class InstalledApp {
+  final String packageName;
+  final String? label;
+
+  InstalledApp({required this.packageName, this.label});
+
+  factory InstalledApp.fromJson(Map<String, dynamic> j) => InstalledApp(
+        packageName: j['package'] as String,
+        label: j['label'] as String?,
+      );
+}

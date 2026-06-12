@@ -50,7 +50,7 @@ class _BlockedAppsScreenState extends ConsumerState<BlockedAppsScreen> {
         .toList();
     setState(() => _busy = true);
     try {
-      await ref.read(apiProvider).updatePolicy({'blockedApps': apps});
+      await ref.read(apiProvider).mergePolicy({'blockedApps': apps});
       messenger.showSnackBar(
         const SnackBar(content: Text('Saved — pushed to your devices')),
       );

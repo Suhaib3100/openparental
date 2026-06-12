@@ -45,12 +45,14 @@ class FeatureTile extends StatelessWidget {
   final IconData icon;
   final String label;
   final Color color;
+  final String? badge;
   final VoidCallback onTap;
   const FeatureTile({
     super.key,
     required this.icon,
     required this.label,
     required this.color,
+    this.badge,
     required this.onTap,
   });
 
@@ -62,7 +64,34 @@ class FeatureTile extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SoftIcon(icon, color, size: 52),
+          Stack(
+            clipBehavior: Clip.none,
+            alignment: Alignment.center,
+            children: [
+              SoftIcon(icon, color, size: 52),
+              if (badge != null)
+                Positioned(
+                  top: -4,
+                  right: -8,
+                  child: Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                    decoration: BoxDecoration(
+                      color: color.withValues(alpha: 0.15),
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: Text(
+                      badge!,
+                      style: TextStyle(
+                        fontSize: 8,
+                        fontWeight: FontWeight.w800,
+                        color: color,
+                      ),
+                    ),
+                  ),
+                ),
+            ],
+          ),
           const SizedBox(height: 8),
           Text(
             label,

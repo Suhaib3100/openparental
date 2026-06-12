@@ -154,4 +154,65 @@ class ApiClient {
     if (data is Map<String, dynamic>) return DeviceLocation.fromJson(data);
     return null;
   }
+
+  // ---- events & usage ----
+
+  Future<List<DeviceEvent>> deviceEvents(
+    String deviceId, {
+    String? type,
+    int limit = 100,
+  }) async {
+    final r = await _dio.get<dynamic>(
+      '/devices/$deviceId/events',
+      queryParameters: {
+        if (type != null) 'type': type,
+        'limit': limit,
+      },
+    );
+    return (r.data as List)
+        .map((e) => DeviceEvent.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+
+  Future<UsageReport> usageReport(String deviceId) async {
+    final r = await _dio.get<dynamic>('/devices/$deviceId/usage-report');
+    return UsageReport.fromJson(r.data as Map<String, dynamic>);
+  }
+
+  Future<PermissionSnapshot> devicePermissions(String deviceId) async {
+    final r = await _dio.get<dynamic>('/devices/$deviceId/permissions');
+    return PermissionSnapshot.fromJson(r.data as Map<String, dynamic>);
+  }
+
+  Future<List<InstalledApp>> installedApps(String deviceId) async {
+    final r = await _dio.get<dynamic>('/devices/$deviceId/apps');
+    return (r.data as List)
+        .map((e) => InstalledApp.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+
+  // ---- content archive ----
+
+  Future<List<ContentItem>> deviceContent(
+    String deviceId, {
+    String? source,
+    int limit = 100,
+  }) async {
+    final r = await _dio.get<dynamic>(
+      '/devices/$deviceId/content',
+      queryParameters: {
+        if (source != null) 'source': source,
+        'limit': limit,
+      },
+    );
+    return (r.data as List)
+        .map((e) => ContentItem.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+
+  /// Merge partial rules into the active family policy (preserves other keys).
+  Future<void> mergePolicy(Map<String, dynamic> partial) async {
+    final existing = await getPolicy() ?? <String, dynamic>{};
+    await updatePolicy({...existing, ...partial});
+  }
 }

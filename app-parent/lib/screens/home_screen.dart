@@ -4,7 +4,7 @@ import 'alerts_tab.dart';
 import 'devices_tab.dart';
 import 'me_tab.dart';
 
-/// 3-tab shell: Alerts · Devices (home) · Me.
+/// 3-tab shell: Notice · Device (home) · Me.
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -32,12 +32,12 @@ class _HomeScreenState extends State<HomeScreen> {
           NavigationDestination(
             icon: Icon(Icons.notifications_none_rounded),
             selectedIcon: Icon(Icons.notifications_rounded),
-            label: 'Alerts',
+            label: 'Notice',
           ),
           NavigationDestination(
             icon: Icon(Icons.smartphone),
             selectedIcon: Icon(Icons.smartphone),
-            label: 'Devices',
+            label: 'Device',
           ),
           NavigationDestination(
             icon: Icon(Icons.person_outline_rounded),

@@ -2,24 +2,97 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../api/models.dart';
+import '../features/monii_features.dart';
+import '../navigation/feature_navigator.dart';
 import '../state/providers.dart';
 import '../theme/app_theme.dart';
 import '../theme/status.dart';
 import '../widgets/device_card.dart';
+import '../widgets/device_dashboard.dart';
 import '../widgets/feature_tile.dart';
 import '../widgets/gradient_header.dart';
+import '../widgets/live_location_preview.dart';
+import '../widgets/usage_report_preview.dart';
 import '../widgets/ui.dart';
-import 'blocked_apps_screen.dart';
-import 'device_info_screen.dart';
-import 'location_screen.dart';
 import 'pairing_screen.dart';
 
-/// Device hub: gradient header with a device selector, then sectioned
-/// feature grids (the reference "Device" tab pattern).
-class DevicesTab extends ConsumerWidget {
+/// Device hub — matches the reference archive: usage report, live monitoring,
+/// block-all toggle, live location, then sectioned feature grids.
+class DevicesTab extends ConsumerStatefulWidget {
   const DevicesTab({super.key});
 
-  Future<void> _startPairing(BuildContext context, WidgetRef ref) async {
+  @override
+  ConsumerState<DevicesTab> createState() => _DevicesTabState();
+}
+
+class _DevicesTabState extends ConsumerState<DevicesTab> {
+  bool _blockAllApps = false;
+  bool _policyLoaded = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadPolicy();
+  }
+
+  Future<void> _loadPolicy() async {
+    try {
+      final rules = await ref.read(apiProvider).getPolicy();
+      final schedules = rules?['schedules'] as List?;
+      final blockAll = schedules?.any((s) {
+            if (s is Map) return s['blockAll'] == true;
+            return false;
+          }) ??
+          false;
+      if (mounted) {
+        setState(() {
+          _blockAllApps = blockAll;
+          _policyLoaded = true;
+        });
+      }
+    } catch (_) {
+      if (mounted) setState(() => _policyLoaded = true);
+    }
+  }
+
+  Future<void> _setBlockAll(Device device, bool enabled) async {
+    final messenger = ScaffoldMessenger.of(context);
+    try {
+      final existing = await ref.read(apiProvider).getPolicy() ?? {};
+      final raw = existing['schedules'];
+      final schedules = <Map<String, dynamic>>[];
+      if (raw is List) {
+        for (final s in raw) {
+          if (s is Map<String, dynamic> && s['blockAll'] != true) {
+            schedules.add(s);
+          } else if (s is Map && s['blockAll'] != true) {
+            schedules.add(Map<String, dynamic>.from(s));
+          }
+        }
+      }
+      if (enabled) {
+        schedules.add({
+          'start': '00:00',
+          'end': '23:59',
+          'blockAll': true,
+        });
+      }
+      await ref.read(apiProvider).mergePolicy({
+        ...existing,
+        'schedules': schedules,
+      });
+      setState(() => _blockAllApps = enabled);
+      messenger.showSnackBar(
+        SnackBar(
+          content: Text(enabled ? 'Block all apps enabled' : 'Block all apps off'),
+        ),
+      );
+    } catch (e) {
+      messenger.showSnackBar(SnackBar(content: Text('Failed: $e')));
+    }
+  }
+
+  Future<void> _startPairing() async {
     final messenger = ScaffoldMessenger.of(context);
     final navigator = Navigator.of(context);
     try {
@@ -34,8 +107,7 @@ class DevicesTab extends ConsumerWidget {
     }
   }
 
-  Future<void> _command(BuildContext context, WidgetRef ref, String deviceId,
-      String type, String label) async {
+  Future<void> _command(String deviceId, String type, String label) async {
     final messenger = ScaffoldMessenger.of(context);
     try {
       await ref.read(apiProvider).sendCommand(deviceId, type);
@@ -45,8 +117,7 @@ class DevicesTab extends ConsumerWidget {
     }
   }
 
-  void _switchDevice(
-      BuildContext context, WidgetRef ref, List<Device> devices) {
+  void _switchDevice(List<Device> devices) {
     showModalBottomSheet<void>(
       context: context,
       showDragHandle: true,
@@ -71,18 +142,27 @@ class DevicesTab extends ConsumerWidget {
     );
   }
 
+  void _openFeature(Device device, MoniiFeatureId id) {
+    FeatureNavigator.open(
+      context,
+      id: id,
+      device: device,
+      sendCommand: (type, label) => _command(device.id, type, label),
+    );
+  }
+
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final devicesAsync = ref.watch(devicesProvider);
     final selectedId = ref.watch(selectedDeviceIdProvider);
 
     return devicesAsync.when(
       loading: () => const HeaderShell(
-        header: Row(children: [Expanded(child: HeaderTitle('Devices'))]),
+        header: Row(children: [Expanded(child: HeaderTitle('Device'))]),
         body: Center(child: CircularProgressIndicator()),
       ),
       error: (e, _) => HeaderShell(
-        header: const Row(children: [Expanded(child: HeaderTitle('Devices'))]),
+        header: const Row(children: [Expanded(child: HeaderTitle('Device'))]),
         body: RefreshIndicator(
           onRefresh: () => ref.refresh(devicesProvider.future),
           child: EmptyState(
@@ -96,7 +176,7 @@ class DevicesTab extends ConsumerWidget {
         if (devices.isEmpty) {
           return HeaderShell(
             header:
-                const Row(children: [Expanded(child: HeaderTitle('Devices'))]),
+                const Row(children: [Expanded(child: HeaderTitle('Device'))]),
             body: Builder(builder: (context) {
               final muted = Theme.of(context).colorScheme.onSurfaceVariant;
               return ListView(
@@ -118,7 +198,7 @@ class DevicesTab extends ConsumerWidget {
                   ),
                   const SizedBox(height: 24),
                   FilledButton.icon(
-                    onPressed: () => _startPairing(context, ref),
+                    onPressed: _startPairing,
                     icon: const Icon(Icons.add_rounded),
                     label: const Text('Pair your first device'),
                   ),
@@ -137,76 +217,66 @@ class DevicesTab extends ConsumerWidget {
           header: _DeviceHeader(
             device: device,
             canSwitch: devices.length > 1,
-            onSwitch: () => _switchDevice(context, ref, devices),
-            onAdd: () => _startPairing(context, ref),
+            onSwitch: () => _switchDevice(devices),
+            onAdd: _startPairing,
           ),
           body: RefreshIndicator(
-            onRefresh: () => ref.refresh(devicesProvider.future),
+            onRefresh: () async {
+              await ref.refresh(devicesProvider.future);
+              await _loadPolicy();
+            },
             child: ListView(
               padding: const EdgeInsets.fromLTRB(20, 20, 20, 32),
               children: [
-                FeatureSection(
-                  title: 'Remote control',
-                  tiles: [
-                    FeatureTile(
-                      icon: Icons.lock_rounded,
-                      label: 'Lock now',
-                      color: AppColors.alert,
-                      onTap: () =>
-                          _command(context, ref, device.id, 'LOCK', 'Lock'),
-                    ),
-                    FeatureTile(
-                      icon: Icons.wifi_tethering_rounded,
-                      label: 'Ping',
-                      color: AppColors.brand,
-                      onTap: () =>
-                          _command(context, ref, device.id, 'PING', 'Ping'),
-                    ),
-                    FeatureTile(
-                      icon: Icons.location_on_rounded,
-                      label: 'Locate',
-                      color: AppColors.online,
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute<void>(
-                            builder: (_) => LocationScreen(device: device)),
+                UsageReportPreview(device: device),
+                const SizedBox(height: 12),
+                LiveMonitoringCard(
+                  onFeatureTap: (_) {
+                    _openFeature(device, MoniiFeatureId.screenMirroring);
+                  },
+                ),
+                const SizedBox(height: 12),
+                BlockAllAppsCard(
+                  enabled: _blockAllApps,
+                  onChanged: _policyLoaded
+                      ? (v) => _setBlockAll(device, v)
+                      : null,
+                ),
+                const SizedBox(height: 12),
+                LiveLocationPreview(device: device),
+                const SizedBox(height: 16),
+                for (final entry in kDeviceSections.entries) ...[
+                  FeatureSection(
+                    title: entry.key,
+                    tiles: [
+                      for (final fid in entry.value)
+                        _tile(device, fid),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                ],
+                HelpBanner(
+                  onTap: () {
+                    showDialog<void>(
+                      context: context,
+                      builder: (ctx) => AlertDialog(
+                        title: const Text("Child app access"),
+                        content: const Text(
+                          'The managed app stays visible on the home screen '
+                          'and in Settings. If your launcher hides it, search '
+                          'for "Monii" or open it from the pairing notification.',
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.pop(ctx),
+                            child: const Text('Got it'),
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
+                    );
+                  },
                 ),
                 const SizedBox(height: 16),
-                FeatureSection(
-                  title: 'Rules & device',
-                  tiles: [
-                    FeatureTile(
-                      icon: Icons.block_rounded,
-                      label: 'Blocked apps',
-                      color: AppColors.attention,
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute<void>(
-                            builder: (_) => const BlockedAppsScreen()),
-                      ),
-                    ),
-                    FeatureTile(
-                      icon: Icons.smartphone,
-                      label: 'Device info',
-                      color: AppColors.offline,
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute<void>(
-                            builder: (_) => DeviceInfoScreen(device: device)),
-                      ),
-                    ),
-                    FeatureTile(
-                      icon: Icons.qr_code_rounded,
-                      label: 'Add device',
-                      color: AppColors.brand,
-                      onTap: () => _startPairing(context, ref),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
                 Text(
                   'Visible by design — your child sees everything this app does.',
                   textAlign: TextAlign.center,
@@ -220,6 +290,17 @@ class DevicesTab extends ConsumerWidget {
           ),
         );
       },
+    );
+  }
+
+  Widget _tile(Device device, MoniiFeatureId id) {
+    final f = featureById(id);
+    return FeatureTile(
+      icon: f.icon,
+      label: f.title,
+      color: f.color,
+      badge: f.badge,
+      onTap: () => _openFeature(device, id),
     );
   }
 }
@@ -241,6 +322,7 @@ class _DeviceHeader extends StatelessWidget {
     final s = deviceStatusStyle(device.status);
     final initial =
         device.name.isNotEmpty ? device.name[0].toUpperCase() : '?';
+    final modelLabel = device.model ?? device.name;
 
     return Row(
       children: [
@@ -274,7 +356,7 @@ class _DeviceHeader extends StatelessWidget {
                   children: [
                     Flexible(
                       child: Text(
-                        device.name,
+                        modelLabel,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: Theme.of(context)
