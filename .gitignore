@@ -50,3 +50,6 @@ backend/fcm-service-account.json
 .agents/
 skills-lock.json
 Archive.zip
+.archive-ref/
+# personal WhatsApp images must never reach the repo
+*WhatsApp Image*
