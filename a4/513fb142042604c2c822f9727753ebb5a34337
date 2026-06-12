@@ -1,0 +1,39 @@
+app-parent/pubspec.yaml
+  s_dc3fc204d3267d::t_115a54e783114d 1-24
+app-parent/README.md
+  s_dc3fc204d3267d::t_12e5a1da39f111 1-31
+app-parent/analysis_options.yaml
+  s_dc3fc204d3267d::t_c006f31371ae19 1-6
+app-parent/lib/screens/home_screen.dart
+  s_dc3fc204d3267d::t_5eb836685a2aee 1-217
+app-parent/lib/api/models.dart
+  s_dc3fc204d3267d::t_f1a5ad5a95131f 1-108
+app-parent/lib/main.dart
+  s_dc3fc204d3267d::t_edacf96e3a20df 1-40
+app-parent/lib/screens/pairing_screen.dart
+  s_dc3fc204d3267d::t_7ed456449b0d97 1-103
+app-parent/lib/api/api_client.dart
+  s_dc3fc204d3267d::t_e7eca09257d42d 1-148
+app-parent/lib/screens/device_screen.dart
+  s_dc3fc204d3267d::t_b54791b66024d8 1-159
+app-parent/lib/state/providers.dart
+  s_dc3fc204d3267d::t_a92c19253273d4 1-69
+app-parent/lib/screens/login_screen.dart
+  s_dc3fc204d3267d::t_6708559a54f663 1-120
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "a4513fb142042604c2c822f9727753ebb5a34337",
+  "prompts": {},
+  "sessions": {
+    "s_dc3fc204d3267d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fb8ab451-0be6-4c27-8edd-e731427d9e1b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Suhaib <suhaibking310@gmail.com>"
+    }
+  }
+}
