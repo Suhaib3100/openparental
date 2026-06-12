@@ -1,7 +1,7 @@
 {
-  "name": "monii-backend",
+  "name": "openparental-backend",
   "version": "0.1.0",
-  "description": "monii backend — auth, pairing, command spine, policy, events, tamper, heartbeat, alerts",
+  "description": "OpenParental backend — auth, pairing, command spine, policy, events, tamper, heartbeat, alerts",
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",

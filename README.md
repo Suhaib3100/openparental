@@ -1,19 +1,19 @@
 <div align="center">
 
-# 🛡️ monii
+# 🛡️ OpenParental
 
 **Consent-first, open-source parental controls for Android.**
 
 *Bypass-evident, not bypass-proof — the kid always knows it's there, and the parent always knows when it's off.*
 
-[![CI](https://github.com/Suhaib3100/monii/actions/workflows/ci.yml/badge.svg)](https://github.com/Suhaib3100/monii/actions/workflows/ci.yml)
+[![CI](https://github.com/Suhaib3100/openparental/actions/workflows/ci.yml/badge.svg)](https://github.com/Suhaib3100/openparental/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![Kotlin](https://img.shields.io/badge/child%20app-Kotlin-7F52FF?logo=kotlin&logoColor=white)](android-managed)
 [![Flutter](https://img.shields.io/badge/parent%20app-Flutter-02569B?logo=flutter&logoColor=white)](app-parent)
 [![NestJS](https://img.shields.io/badge/backend-NestJS-E0234E?logo=nestjs&logoColor=white)](backend)
 
-[Why monii?](#-why-monii) •
+[Why OpenParental?](#-why-openparental) •
 [Features](#-features) •
 [Architecture](#%EF%B8%8F-architecture) •
 [Quick start](#-quick-start) •
@@ -24,16 +24,16 @@
 
 ---
 
-## 💡 Why monii?
+## 💡 Why OpenParental?
 
 Most parental-control apps compete on how well they *hide*: stealth modes, covert
-screenshots, secret microphones. monii makes the opposite bet — **supervision a
+screenshots, secret microphones. OpenParental makes the opposite bet — **supervision a
 teenager can verify beats spyware they'll route around.**
 
 - **Overt and consent-based.** The child app has a UI, says what it does, and
   shows what it reports. Nothing runs in secret.
 - **Bypass-evident by design.** Without Device Owner you *can't* make an app
-  un-killable — so monii doesn't pretend to. Instead, every bypass (disabling
+  un-killable — so OpenParental doesn't pretend to. Instead, every bypass (disabling
   accessibility, revoking a permission, force-stopping the app, the device going
   dark) becomes a **parent alert within minutes**. Turning it off is always
   possible — and never silent.
@@ -74,7 +74,7 @@ flowchart LR
 Three components, one monorepo:
 
 ```
-monii/
+openparental/
 ├── backend/           NestJS + Postgres (Prisma) + Redis + FCM
 │   ├── src/           auth · pairing · devices · policies · commands ·
 │   │                  events · heartbeats · tamper · alerts · locations
@@ -148,12 +148,12 @@ parent-app UX. See [CONTRIBUTING.md](CONTRIBUTING.md) to get started.
 
 One rule is non-negotiable: PRs adding covert surveillance (hidden recording,
 stealth modes, secret capture) will be declined — that's the whole point of the
-project. See [why monii?](#-why-monii)
+project. See [why OpenParental?](#-why-openparental)
 
 ## 🔐 Security
 
 Found a vulnerability? Please report it privately via
-[GitHub Security Advisories](https://github.com/Suhaib3100/monii/security/advisories/new) —
+[GitHub Security Advisories](https://github.com/Suhaib3100/openparental/security/advisories/new) —
 see [SECURITY.md](SECURITY.md).
 
 ## 📄 License
@@ -163,5 +163,5 @@ see [SECURITY.md](SECURITY.md).
 ---
 
 <div align="center">
-<sub>If monii's approach resonates with you, a ⭐ helps other parents find it.</sub>
+<sub>If OpenParental's approach resonates with you, a ⭐ helps other parents find it.</sub>
 </div>

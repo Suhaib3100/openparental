@@ -1,6 +1,6 @@
 # Security Policy
 
-monii handles family data — device locations, app usage, and remote-control
+OpenParental handles family data — device locations, app usage, and remote-control
 commands for minors' devices. Security reports are taken seriously.
 
 ## Reporting a vulnerability
@@ -8,7 +8,7 @@ commands for minors' devices. Security reports are taken seriously.
 **Please do not open a public issue for security problems.**
 
 Report privately via
-[GitHub Security Advisories](https://github.com/Suhaib3100/monii/security/advisories/new)
+[GitHub Security Advisories](https://github.com/Suhaib3100/openparental/security/advisories/new)
 ("Report a vulnerability" on the repo's Security tab).
 
 You can expect an acknowledgment within a few days. Please include reproduction
@@ -23,7 +23,7 @@ Especially interested in:
 - Pairing-code brute force or hijack
 - Command-spine abuse (forging, replaying, or escalating device commands)
 - Child-app hardening gaps that allow *silent* bypass (bypass is expected —
-  monii is bypass-evident — but a bypass that produces **no tamper alert** is a
+  OpenParental is bypass-evident — but a bypass that produces **no tamper alert** is a
   vulnerability)
 
 ## Out of scope

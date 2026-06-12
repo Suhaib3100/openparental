@@ -1,4 +1,4 @@
-# app-parent — monii parent (controller) app
+# app-parent — OpenParental parent (controller) app
 
 Flutter. Login/register, pair a device (shows the code to type on the child),
 device dashboard (online/battery/last-seen), remote **Lock** / **Ping**, a

@@ -1,13 +1,13 @@
-# Contributing to monii
+# Contributing to OpenParental
 
-Thanks for your interest! monii is a consent-first parental-control stack, and
+Thanks for your interest! OpenParental is a consent-first parental-control stack, and
 contributions of every size are welcome — bug reports, OEM test results, docs,
 and code.
 
 ## Ground rules
 
 - **No covert surveillance.** PRs that add hidden recording, stealth modes,
-  covert capture, or anything the child can't see will be declined. monii is
+  covert capture, or anything the child can't see will be declined. OpenParental is
   bypass-evident by design — that constraint is the product.
 - Be kind. See our [Code of Conduct](CODE_OF_CONDUCT.md).
 
@@ -52,5 +52,5 @@ parent: show device battery on dashboard
 
 ## Questions?
 
-Open a [discussion or issue](https://github.com/Suhaib3100/monii/issues) — happy
+Open a [discussion or issue](https://github.com/Suhaib3100/openparental/issues) — happy
 to help you get started.

@@ -1,4 +1,4 @@
-# monii-backend
+# openparental-backend
 
 Node + TypeScript (NestJS) backend: auth, pairing, command spine, policy, events,
 tamper, heartbeat, alerts. Postgres (Prisma) + Redis + FCM.
