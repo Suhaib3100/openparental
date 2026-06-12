@@ -3,6 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../api/models.dart';
 import '../state/providers.dart';
+import '../widgets/alert_tile.dart';
+import '../widgets/device_card.dart';
+import '../widgets/ui.dart';
 import 'device_screen.dart';
 import 'pairing_screen.dart';
 
@@ -24,26 +27,37 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final scheme = Theme.of(context).colorScheme;
     return DefaultTabController(
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('monii'),
+          titleSpacing: 20,
+          title: const Text('OpenParental'),
           actions: [
             IconButton(
-              icon: const Icon(Icons.logout),
+              icon: const Icon(Icons.logout_rounded),
               tooltip: 'Log out',
               onPressed: () => ref.read(authProvider.notifier).logout(),
             ),
+            const SizedBox(width: 4),
           ],
-          bottom: const TabBar(
-            tabs: [Tab(text: 'Devices'), Tab(text: 'Alerts')],
+          bottom: TabBar(
+            labelColor: scheme.primary,
+            unselectedLabelColor: scheme.onSurfaceVariant,
+            indicatorColor: scheme.primary,
+            indicatorWeight: 2.5,
+            indicatorSize: TabBarIndicatorSize.label,
+            labelStyle: const TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
+            tabs: const [Tab(text: 'Devices'), Tab(text: 'Alerts')],
           ),
         ),
         body: const TabBarView(children: [_DevicesTab(), _AlertsTab()]),
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () => _startPairing(context, ref),
-          icon: const Icon(Icons.add),
+          backgroundColor: scheme.primary,
+          foregroundColor: scheme.onPrimary,
+          icon: const Icon(Icons.add_rounded),
           label: const Text('Pair device'),
         ),
       ),
@@ -82,39 +96,32 @@ class _DevicesTabState extends ConsumerState<_DevicesTab> {
             return const Center(child: CircularProgressIndicator());
           }
           if (snap.hasError) {
-            return ListView(children: [
-              Padding(
-                padding: const EdgeInsets.all(24),
-                child: Text('Error: ${snap.error}'),
-              ),
-            ]);
+            return EmptyState(
+              icon: Icons.wifi_off_rounded,
+              title: "Couldn't reach the server",
+              subtitle: '${snap.error}',
+            );
           }
           final devices = snap.data ?? const <Device>[];
           if (devices.isEmpty) {
-            return ListView(children: const [
-              Padding(
-                padding: EdgeInsets.all(32),
-                child: Center(child: Text('No devices yet. Tap "Pair device".')),
-              ),
-            ]);
+            return const EmptyState(
+              icon: Icons.phone_iphone_rounded,
+              title: 'No devices yet',
+              subtitle: "Tap “Pair device” to add your child's phone.",
+            );
           }
-          return ListView.builder(
+          return ListView.separated(
+            padding: const EdgeInsets.fromLTRB(16, 16, 16, 96),
             itemCount: devices.length,
-            itemBuilder: (context, i) {
-              final d = devices[i];
-              return ListTile(
-                leading: _StatusDot(status: d.status),
-                title: Text(d.name),
-                subtitle: Text(
-                  d.batteryPct != null ? '${d.status} · ${d.batteryPct}%' : d.status,
-                ),
-                trailing: const Icon(Icons.chevron_right),
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute<void>(builder: (_) => DeviceScreen(device: d)),
-                ),
-              );
-            },
+            separatorBuilder: (_, __) => const SizedBox(height: 12),
+            itemBuilder: (context, i) => DeviceCard(
+              device: devices[i],
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute<void>(
+                    builder: (_) => DeviceScreen(device: devices[i])),
+              ),
+            ),
           );
         },
       ),
@@ -154,64 +161,26 @@ class _AlertsTabState extends ConsumerState<_AlertsTab> {
           }
           final alerts = snap.data ?? const <AlertModel>[];
           if (alerts.isEmpty) {
-            return ListView(children: const [
-              Padding(
-                padding: EdgeInsets.all(32),
-                child: Center(child: Text('No alerts.')),
-              ),
-            ]);
+            return const EmptyState(
+              icon: Icons.check_circle_outline_rounded,
+              title: 'All calm',
+              subtitle: 'No alerts right now.',
+            );
           }
-          return ListView.builder(
+          return ListView.separated(
+            padding: const EdgeInsets.fromLTRB(16, 12, 16, 96),
             itemCount: alerts.length,
-            itemBuilder: (context, i) {
-              final a = alerts[i];
-              return ListTile(
-                leading: Icon(_iconFor(a.type),
-                    color: a.read ? Colors.grey : Colors.blue),
-                title: Text(a.title),
-                subtitle: Text(a.body),
-                onTap: () async {
-                  await ref.read(apiProvider).markAlertRead(a.id);
-                  _refresh();
-                },
-              );
-            },
+            separatorBuilder: (_, __) => const Divider(height: 1),
+            itemBuilder: (context, i) => AlertTile(
+              alert: alerts[i],
+              onTap: () async {
+                await ref.read(apiProvider).markAlertRead(alerts[i].id);
+                _refresh();
+              },
+            ),
           );
         },
       ),
     );
-  }
-
-  IconData _iconFor(String type) {
-    switch (type) {
-      case 'TAMPER':
-        return Icons.warning_amber;
-      case 'DEVICE_OFFLINE':
-        return Icons.cloud_off;
-      case 'GEOFENCE':
-        return Icons.location_on;
-      case 'UNBLOCK_REQUEST':
-        return Icons.lock_open;
-      case 'NEW_APP':
-        return Icons.download;
-      default:
-        return Icons.notifications;
-    }
-  }
-}
-
-class _StatusDot extends StatelessWidget {
-  final String status;
-  const _StatusDot({required this.status});
-
-  @override
-  Widget build(BuildContext context) {
-    final color = switch (status) {
-      'ONLINE' => Colors.green,
-      'DARK' => Colors.red,
-      'OFFLINE' => Colors.grey,
-      _ => Colors.orange,
-    };
-    return Icon(Icons.circle, size: 14, color: color);
   }
 }

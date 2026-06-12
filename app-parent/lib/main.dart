@@ -4,23 +4,23 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'screens/home_screen.dart';
 import 'screens/login_screen.dart';
 import 'state/providers.dart';
+import 'theme/app_theme.dart';
 
 void main() {
-  runApp(const ProviderScope(child: MoniiParentApp()));
+  runApp(const ProviderScope(child: OpenParentalApp()));
 }
 
-class MoniiParentApp extends StatelessWidget {
-  const MoniiParentApp({super.key});
+class OpenParentalApp extends StatelessWidget {
+  const OpenParentalApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'monii',
+      title: 'OpenParental',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorSchemeSeed: const Color(0xFF3B82F6),
-        useMaterial3: true,
-      ),
+      theme: AppTheme.light(),
+      darkTheme: AppTheme.dark(),
+      themeMode: ThemeMode.system,
       home: const RootView(),
     );
   }
