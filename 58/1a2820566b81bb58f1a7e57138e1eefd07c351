@@ -1,0 +1,25 @@
+backend/src/events/events.controller.ts
+  s_b8f7e9adcfff54::t_4dc6b111174507 10,35,41,44-66
+backend/src/events/events.service.spec.ts
+  s_b8f7e9adcfff54::t_1722b733833d3d 2,10-12,15,19-25,28,35,57-74
+backend/src/content/dto/ingest-content.dto.ts
+  s_b8f7e9adcfff54::t_05e5c72256be15 15
+backend/src/events/events.service.ts
+  s_b8f7e9adcfff54::t_ebd9d14ee27e47 2-3,13,33-34,42,46,51-153
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "581a2820566b81bb58f1a7e57138e1eefd07c351",
+  "prompts": {},
+  "sessions": {
+    "s_b8f7e9adcfff54": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "65c74276-6ca2-4c64-bc47-5ca140cb74cd",
+        "model": "composer-2.5"
+      },
+      "human_author": "Suhaib <suhaibking310@gmail.com>"
+    }
+  }
+}
