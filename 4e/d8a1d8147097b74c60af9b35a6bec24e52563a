@@ -1,0 +1,51 @@
+android-managed/app/src/main/res/layout/activity_main.xml
+  s_29cf327f8923c4::t_de88f0b2edce13 3,6-8,14-16,18,22-27,29-31,34-38,40-45,47-54,56-64,66-77,79-81,84,86-161,163,166-167,169-181,183-225,227-393,395-396,398-400,403,405-406,408-414,418,421-422,424-425,427-432,434-445,447-448,450-459,461-471,473-480,482-503,507-512
+android-managed/app/src/main/kotlin/app/monii/managed/ui/MainActivity.kt
+  s_29cf327f8923c4::t_6fb29a8e6c7904 6,12,15,17-18,20,35-37,67,70-73,75-77,128,131-177,179-185,190-202,211-220
+android-managed/app/src/main/res/drawable/dot.xml
+  s_29cf327f8923c4::t_0824f2398f7c36 1-8
+android-managed/app/src/main/res/drawable/bg_chip.xml
+  s_29cf327f8923c4::t_c9a9abe6c4f540 1-6
+android-managed/app/src/main/res/layout/item_permission.xml
+  s_29cf327f8923c4::t_5d9e598a904456 7-10,12-14,20-30,35,43-45,51-54,57-58,62-66
+.gitignore
+  s_29cf327f8923c4::t_e457f9a596a871 48-52
+android-managed/app/src/main/res/values/strings.xml
+  s_29cf327f8923c4::t_bb075664e5ff99 2-4,6-16,18-21,23-36,38-39,41-46,48,50-51,53-57
+android-managed/app/src/main/res/values/themes.xml
+  s_29cf327f8923c4::t_903c539c72d4b2 2-17
+android-managed/app/src/main/kotlin/app/monii/managed/ui/OnboardingActivity.kt
+  s_29cf327f8923c4::t_885ef2ff4e8cd4 6,14,16,25-27,32,60,68,75,82,89,96,104,124,127,134-135,139-143,146-157
+android-managed/app/src/main/res/drawable/bg_icon_circle.xml
+  s_29cf327f8923c4::t_60f118ca842c8e 1-5
+android-managed/app/src/main/res/values/colors.xml
+  s_29cf327f8923c4::t_7a240f71bf6678 1-25
+android-managed/app/src/main/res/layout/activity_onboarding.xml
+  s_29cf327f8923c4::t_fb106acd873bfe 3,6-8,14-16,21,23-24,29-30,32-52,63-70
+android-managed/app/build.gradle.kts
+  s_dc3fc204d3267d::t_6aa06658ea18e6 20-21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "4ed8a1d8147097b74c60af9b35a6bec24e52563a",
+  "prompts": {},
+  "sessions": {
+    "s_29cf327f8923c4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93c7f6f4-61cb-4730-86cb-63547aab020f",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Suhaib <suhaibking310@gmail.com>"
+    },
+    "s_dc3fc204d3267d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fb8ab451-0be6-4c27-8edd-e731427d9e1b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Suhaib <suhaibking310@gmail.com>"
+    }
+  }
+}
