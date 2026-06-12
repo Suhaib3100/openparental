@@ -2,15 +2,29 @@ import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../api/api_client.dart';
+import '../api/models.dart';
 
 /// Backend base URL (editable on the login screen for dev).
 final baseUrlProvider =
-    StateProvider<String>((ref) => 'http://10.0.2.2:3000');
+    StateProvider<String>((ref) => 'http://192.168.1.5:3000');
 
 final apiProvider = Provider<ApiClient>((ref) {
   final base = ref.watch(baseUrlProvider);
   return ApiClient(baseUrl: base);
 });
+
+/// All devices in the family. Refresh with `ref.invalidate(devicesProvider)`.
+final devicesProvider = FutureProvider<List<Device>>(
+  (ref) => ref.watch(apiProvider).devices(),
+);
+
+/// The device the Devices tab is focused on (defaults to the first).
+final selectedDeviceIdProvider = StateProvider<String?>((ref) => null);
+
+/// Family-wide alert feed. Refresh with `ref.invalidate(alertsProvider)`.
+final alertsProvider = FutureProvider<List<AlertModel>>(
+  (ref) => ref.watch(apiProvider).alerts(),
+);
 
 class AuthState {
   final bool loading;
@@ -34,7 +48,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
     state = const AuthState(loading: true);
     try {
       await ref.read(apiProvider).login(email, password);
-      state = const AuthState(loggedIn: true);
+      _onSignedIn();
     } catch (e) {
       state = AuthState(error: _message(e));
     }
@@ -44,10 +58,16 @@ class AuthNotifier extends StateNotifier<AuthState> {
     state = const AuthState(loading: true);
     try {
       await ref.read(apiProvider).register(email, password);
-      state = const AuthState(loggedIn: true);
+      _onSignedIn();
     } catch (e) {
       state = AuthState(error: _message(e));
     }
+  }
+
+  void _onSignedIn() {
+    ref.invalidate(devicesProvider);
+    ref.invalidate(alertsProvider);
+    state = const AuthState(loggedIn: true);
   }
 
   Future<void> logout() async {
