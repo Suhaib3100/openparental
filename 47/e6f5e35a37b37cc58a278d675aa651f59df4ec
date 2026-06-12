@@ -1,0 +1,36 @@
+app-parent/lib/widgets/device_dashboard.dart
+  s_dc3fc204d3267d::t_3b2f072c79b86d 89-91
+  s_dc3fc204d3267d::t_99ad8a198a98fd 81
+app-parent/lib/features/monii_features.dart
+  s_dc3fc204d3267d::t_e1287fe692b815 302-303
+  s_dc3fc204d3267d::t_aa690ede4fdc1b 322-328
+  s_dc3fc204d3267d::t_29136ecbc0e6fd 114-149
+  s_dc3fc204d3267d::t_53669bee4839ef 79-84,87,92-95
+  s_dc3fc204d3267d::t_d1681d3a833834 8-9,11,15-21
+app-parent/lib/screens/live_monitoring_screen.dart
+  s_dc3fc204d3267d::t_aa3f6ba389b817 20-22,26-28,30-34
+  s_dc3fc204d3267d::t_512ccbaff19452 6
+app-parent/lib/screens/devices_tab.dart
+  s_dc3fc204d3267d::t_5244acce669508 234-240
+android-managed/app/src/main/kotlin/app/monii/managed/vpn/VpnFilterService.kt
+  s_dc3fc204d3267d::t_ca95c0ec44e9e3 3
+app-parent/lib/navigation/feature_navigator.dart
+  s_dc3fc204d3267d::t_21f3b60f5b425b 64-66,70-71
+  s_dc3fc204d3267d::t_dfd85ec968f494 80-93
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "47e6f5e35a37b37cc58a278d675aa651f59df4ec",
+  "prompts": {},
+  "sessions": {
+    "s_dc3fc204d3267d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fb8ab451-0be6-4c27-8edd-e731427d9e1b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Suhaib <suhaibking310@gmail.com>"
+    }
+  }
+}
