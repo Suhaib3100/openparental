@@ -1,0 +1,23 @@
+SECURITY.md
+  s_29cf327f8923c4::t_4e0578afe11ffd 39
+.github/workflows/ci.yml
+  s_29cf327f8923c4::t_142c3a1ed1d12b 5
+app-parent/pubspec.lock
+  s_29cf327f8923c4::t_b0f7fe45def748 1-530
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "cbb2a90d302297cc0d9d3657e90e8951f4264287",
+  "prompts": {},
+  "sessions": {
+    "s_29cf327f8923c4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93c7f6f4-61cb-4730-86cb-63547aab020f",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Suhaib <suhaibking310@gmail.com>"
+    }
+  }
+}
