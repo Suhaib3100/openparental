@@ -40,6 +40,10 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".ui.OnboardingActivity"
+            android:exported="false" />
+
         <!--
           Anchor foreground service. specialUse is the type a sideloaded app can
           declare without Play review. Spike #1 measures whether this type

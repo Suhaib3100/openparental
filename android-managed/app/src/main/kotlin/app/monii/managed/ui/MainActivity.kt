@@ -66,6 +66,9 @@ class MainActivity : AppCompatActivity() {
         binding.btnRefresh.setOnClickListener { render() }
         binding.btnBattery.setOnClickListener { requestIgnoreBatteryOptimizations() }
         binding.btnAutostart.setOnClickListener { openOemAutostartSettings() }
+        binding.btnSetup.setOnClickListener {
+            startActivity(Intent(this, OnboardingActivity::class.java))
+        }
     }
 
     override fun onResume() {
