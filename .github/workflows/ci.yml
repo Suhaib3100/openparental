@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches: [master, 'Suhaib3100/**']
+  pull_request:
+
+jobs:
+  backend:
+    name: Backend (build + test)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+      - run: npm ci
+      - run: npx prisma generate
+      - run: npm run build
+      - run: npm test
+
+  android-managed:
+    name: Managed app (assembleDebug)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - uses: gradle/actions/setup-gradle@v4
+      # Generates the wrapper (not committed) then builds the debug APK.
+      - name: Build debug APK
+        working-directory: android-managed
+        run: |
+          gradle wrapper --gradle-version 8.9
+          ./gradlew assembleDebug --no-daemon --stacktrace
+
+  parent-app:
+    name: Parent app (analyze)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - name: Analyze
+        working-directory: app-parent
+        run: |
+          flutter pub get
+          flutter analyze
