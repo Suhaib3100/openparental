@@ -35,3 +35,9 @@ app-parent/.flutter-plugins-dependencies
 .env
 .env.*
 !.env.example
+
+# Firebase secrets — never commit
+android-managed/app/google-services.json
+backend/fcm-service-account.json
+**/*firebase-adminsdk*.json
+**/google-services.json

@@ -3,8 +3,6 @@
 Android parental enforcement, built **bypass-evident, not bypass-proof**. Overt,
 consent-based, no Device Owner, no covert surveillance.
 
-Engineering plan: `~/.gstack/projects/unknown/suhaib-Suhaib3100-office-hours-app-eng-plan-20260612-011759.md`
-
 ## Monorepo layout
 
 ```
