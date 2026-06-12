@@ -1,0 +1,32 @@
+app-parent/lib/api/api_client.dart
+  s_dc3fc204d3267d::t_f9ed2b60f01c2a 148-156
+app-parent/lib/api/models.dart
+  s_dc3fc204d3267d::t_142fa7f3a2222d 109-131
+app-parent/lib/screens/pairing_screen.dart
+  s_dc3fc204d3267d::t_674117e92beffb 5,55,67-68,71,75-98,100,104,110,112,117,136-155,157-158
+app-parent/lib/screens/home_screen.dart
+  s_dc3fc204d3267d::t_89bc95b029e917 6,12,14,17-26,40,42-66,68-78,84-87,89,92,124-158,166-239,241,244,277
+app-parent/lib/screens/settings_screen.dart
+  s_dc3fc204d3267d::t_2b1815be08e98d 1-91
+app-parent/lib/screens/device_screen.dart
+  s_dc3fc204d3267d::t_a3d247a629d1be 4,23-24,30,44,48-55,89-96,102,109,115-130,135-145,150-152,159-164,222-224,227-275
+  s_dc3fc204d3267d::t_cde02c4e4b6b5b 225-226
+app-parent/pubspec.yaml
+  s_dc3fc204d3267d::t_5b8fb81ca9e2ba 18-19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "e577008841ebb0f7ea7a520867e1dc78c042a400",
+  "prompts": {},
+  "sessions": {
+    "s_dc3fc204d3267d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fb8ab451-0be6-4c27-8edd-e731427d9e1b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Suhaib <suhaibking310@gmail.com>"
+    }
+  }
+}
