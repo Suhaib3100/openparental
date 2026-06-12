@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.net.VpnService
 import android.os.Build
 import android.os.Bundle
 import android.os.PowerManager
@@ -15,6 +16,7 @@ import app.monii.managed.admin.AdminManager
 import app.monii.managed.databinding.ActivityOnboardingBinding
 import app.monii.managed.databinding.ItemPermissionBinding
 import app.monii.managed.permissions.SpecialAccess
+import app.monii.managed.vpn.VpnFilterService
 
 /**
  * Guided special-access setup. Each step opens the right Settings screen and the
@@ -37,6 +39,11 @@ class OnboardingActivity : AppCompatActivity() {
 
     private val notifPermission =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { refresh() }
+
+    private val vpnConsent =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) startVpn()
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,6 +82,13 @@ class OnboardingActivity : AppCompatActivity() {
                 "Lets monii lock the device remotely.",
                 { admin.isActive() },
                 { startSafe(admin.enableIntent()) },
+            ),
+            Step(
+                "Content filter",
+                "Block adult & unsafe sites with a private on-device DNS filter.",
+                { false },
+                { enableContentFilter() },
+                optional = true,
             ),
             Step(
                 "Auto-start (some phones)",
@@ -120,6 +134,15 @@ class OnboardingActivity : AppCompatActivity() {
 
     private fun startSafe(intent: Intent) {
         runCatching { startActivity(intent) }
+    }
+
+    private fun enableContentFilter() {
+        val prep = VpnService.prepare(this)
+        if (prep != null) vpnConsent.launch(prep) else startVpn()
+    }
+
+    private fun startVpn() {
+        runCatching { startService(Intent(this, VpnFilterService::class.java)) }
     }
 
     private fun notificationsGranted(): Boolean =
