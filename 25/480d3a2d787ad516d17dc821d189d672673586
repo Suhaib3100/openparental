@@ -1,0 +1,19 @@
+android-managed/app/build.gradle.kts
+  s_29cf327f8923c4::t_7e3c9c59242507 4-9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "25480d3a2d787ad516d17dc821d189d672673586",
+  "prompts": {},
+  "sessions": {
+    "s_29cf327f8923c4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93c7f6f4-61cb-4730-86cb-63547aab020f",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Suhaib <suhaibking310@gmail.com>"
+    }
+  }
+}
