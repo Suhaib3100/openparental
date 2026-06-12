@@ -1,0 +1,29 @@
+app-parent/lib/screens/usage_report_screen.dart
+  s_29cf327f8923c4::t_0d82a63216b6da 32-37
+app-parent/lib/screens/check_permissions_screen.dart
+  s_29cf327f8923c4::t_d2776589b7c736 45-50
+app-parent/lib/screens/devices_tab.dart
+  s_29cf327f8923c4::t_d5b0d643d8fecb 224-225
+app-parent/lib/screens/alerts_tab.dart
+  s_29cf327f8923c4::t_6c34675844ca3e 25-28
+app-parent/lib/screens/feature_feed_screen.dart
+  s_29cf327f8923c4::t_3207596d780d58 101-106
+app-parent/lib/screens/device_info_screen.dart
+  s_29cf327f8923c4::t_b0f8fde2016be6 72,74,76,78
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "25cc35c7b51b78b88d6d1445a4b8dcd0bd683daf",
+  "prompts": {},
+  "sessions": {
+    "s_29cf327f8923c4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93c7f6f4-61cb-4730-86cb-63547aab020f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Suhaib <suhaibking310@gmail.com>"
+    }
+  }
+}
