@@ -5,11 +5,20 @@ import '../theme/app_theme.dart';
 
 /// Every surface in the parent app — Device tab grids and Notice feed rows.
 enum MoniiFeatureId {
-  // Live monitoring (consented screen view only — no camera/mic)
+  // Live monitoring
+  remoteCamera,
   screenMirroring,
+  oneWayAudio,
   liveLocation,
   blockAllApps,
   usageReport,
+  // Recording & snapshots
+  cameraRecording,
+  screenRecording,
+  ambientRecording,
+  cameraSnapshot,
+  screenSnapshot,
+  snapshotAndRecording,
   // Device activity
   screenTimeLimits,
   appTimeLimits,
@@ -67,9 +76,23 @@ const kMoniiFeatures = <MoniiFeature>[
     showOnDevice: true,
   ),
   MoniiFeature(
+    id: MoniiFeatureId.remoteCamera,
+    title: 'Remote Camera',
+    icon: Icons.videocam_rounded,
+    color: AppColors.brand,
+    showOnDevice: true,
+  ),
+  MoniiFeature(
     id: MoniiFeatureId.screenMirroring,
-    title: 'Screen View',
+    title: 'Screen Mirroring',
     icon: Icons.smartphone_rounded,
+    color: AppColors.brand,
+    showOnDevice: true,
+  ),
+  MoniiFeature(
+    id: MoniiFeatureId.oneWayAudio,
+    title: 'One-Way Audio',
+    icon: Icons.headphones_rounded,
     color: AppColors.brand,
     showOnDevice: true,
   ),
@@ -86,6 +109,43 @@ const kMoniiFeatures = <MoniiFeature>[
     icon: Icons.location_on_rounded,
     color: AppColors.online,
     showOnDevice: true,
+  ),
+  MoniiFeature(
+    id: MoniiFeatureId.cameraRecording,
+    title: 'Camera Recording',
+    icon: Icons.video_camera_front_rounded,
+    color: Color(0xFF7C5CBF),
+  ),
+  MoniiFeature(
+    id: MoniiFeatureId.screenRecording,
+    title: 'Screen Recording',
+    icon: Icons.screen_share_rounded,
+    color: Color(0xFF7C5CBF),
+  ),
+  MoniiFeature(
+    id: MoniiFeatureId.ambientRecording,
+    title: 'Ambient Recording',
+    icon: Icons.mic_rounded,
+    color: Color(0xFF7C5CBF),
+  ),
+  MoniiFeature(
+    id: MoniiFeatureId.cameraSnapshot,
+    title: 'Camera Snapshot',
+    icon: Icons.photo_camera_rounded,
+    color: Color(0xFF7C5CBF),
+  ),
+  MoniiFeature(
+    id: MoniiFeatureId.screenSnapshot,
+    title: 'Screen Snapshot',
+    icon: Icons.crop_free_rounded,
+    color: Color(0xFF7C5CBF),
+  ),
+  MoniiFeature(
+    id: MoniiFeatureId.snapshotAndRecording,
+    title: 'Snapshot & Recording',
+    icon: Icons.video_library_rounded,
+    color: Color(0xFF7C5CBF),
+    showInNotice: true,
   ),
   MoniiFeature(
     id: MoniiFeatureId.screenTimeLimits,
@@ -239,6 +299,8 @@ String noticePreview(MoniiFeatureId id, {Device? device, AlertModel? latestAlert
       return 'No browsing data yet';
     case MoniiFeatureId.tiktokYoutubeHistory:
       return 'No watch history yet';
+    case MoniiFeatureId.snapshotAndRecording:
+      return 'No data available';
     case MoniiFeatureId.usageLogs:
       if (device != null) {
         return '[${device.name}] Lock the Screen';
@@ -257,6 +319,13 @@ String noticePreview(MoniiFeatureId id, {Device? device, AlertModel? latestAlert
 }
 
 const kDeviceSections = <String, List<MoniiFeatureId>>{
+  'Snapshot & Recording': [
+    MoniiFeatureId.cameraRecording,
+    MoniiFeatureId.screenRecording,
+    MoniiFeatureId.ambientRecording,
+    MoniiFeatureId.cameraSnapshot,
+    MoniiFeatureId.screenSnapshot,
+  ],
   'Device Activity': [
     MoniiFeatureId.screenTimeLimits,
     MoniiFeatureId.appTimeLimits,

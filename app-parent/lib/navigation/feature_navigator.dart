@@ -61,14 +61,34 @@ class FeatureNavigator {
               builder: (_) => CheckPermissionsScreen(device: device)),
         );
         return;
+      case MoniiFeatureId.remoteCamera:
+        await _live(context, LiveMonitoringKind.camera, device);
+        return;
       case MoniiFeatureId.screenMirroring:
         await _live(context, LiveMonitoringKind.screen, device);
+        return;
+      case MoniiFeatureId.oneWayAudio:
+        await _live(context, LiveMonitoringKind.audio, device);
         return;
       case MoniiFeatureId.alertsAndRequests:
         await Navigator.push(
           context,
           MaterialPageRoute<void>(
               builder: (_) => AlertsRequestsScreen(device: device)),
+        );
+        return;
+      case MoniiFeatureId.snapshotAndRecording:
+        await Navigator.push(
+          context,
+          MaterialPageRoute<void>(
+            builder: (_) => FeatureFeedScreen(
+              feature: f,
+              device: device,
+              tabs: const ['Camera', 'Screen', 'Audio'],
+              emptyHint:
+                  'No data. Go to Device → Camera Snapshot to set up.',
+            ),
+          ),
         );
         return;
       case MoniiFeatureId.browserSafety:

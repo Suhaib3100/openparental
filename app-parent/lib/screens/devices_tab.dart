@@ -231,8 +231,13 @@ class _DevicesTabState extends ConsumerState<DevicesTab> {
                 UsageReportPreview(device: device),
                 const SizedBox(height: 12),
                 LiveMonitoringCard(
-                  onFeatureTap: (_) {
-                    _openFeature(device, MoniiFeatureId.screenMirroring);
+                  onFeatureTap: (label) {
+                    final id = switch (label) {
+                      'Remote Camera' => MoniiFeatureId.remoteCamera,
+                      'Screen Mirroring' => MoniiFeatureId.screenMirroring,
+                      _ => MoniiFeatureId.oneWayAudio,
+                    };
+                    _openFeature(device, id);
                   },
                 ),
                 const SizedBox(height: 12),

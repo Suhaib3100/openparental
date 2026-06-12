@@ -78,7 +78,7 @@ class UsageReportCard extends StatelessWidget {
   }
 }
 
-/// Consented screen-view launcher (no camera, no microphone).
+/// Remote camera · screen mirror · one-way audio row.
 class LiveMonitoringCard extends StatelessWidget {
   final void Function(String label) onFeatureTap;
   const LiveMonitoringCard({super.key, required this.onFeatureTap});
@@ -86,7 +86,9 @@ class LiveMonitoringCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final items = [
-      (Icons.smartphone_rounded, 'Screen View'),
+      (Icons.videocam_rounded, 'Remote Camera'),
+      (Icons.smartphone_rounded, 'Screen Mirroring'),
+      (Icons.headphones_rounded, 'One-Way Audio'),
     ];
     return Card(
       child: Padding(

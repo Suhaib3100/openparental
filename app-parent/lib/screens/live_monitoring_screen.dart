@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../api/models.dart';
 import '../theme/app_theme.dart';
 
-enum LiveMonitoringKind { screen }
+enum LiveMonitoringKind { camera, screen, audio }
 
 /// Connecting state for live monitoring features (reference UI).
 class LiveMonitoringScreen extends StatelessWidget {
@@ -17,13 +17,21 @@ class LiveMonitoringScreen extends StatelessWidget {
   });
 
   String get _title => switch (kind) {
-        LiveMonitoringKind.screen => 'Screen View',
+        LiveMonitoringKind.camera => 'Remote Camera',
+        LiveMonitoringKind.screen => 'Screen Mirroring',
+        LiveMonitoringKind.audio => 'One-Way Audio',
       };
 
   String get _warning => switch (kind) {
+        LiveMonitoringKind.camera =>
+          "If the child is using the camera, you won't see the surroundings "
+          'through Remote Camera until they finish.',
         LiveMonitoringKind.screen =>
-          "Screen viewing uses the child device's screen-capture permission, "
-          'and the child app shows a banner whenever viewing is active.',
+          'Screen mirroring requires screen-capture permission on the child '
+          'device. Your child sees when mirroring is active.',
+        LiveMonitoringKind.audio =>
+          'One-way audio lets you listen through the device microphone. '
+          'The child app shows when audio monitoring is on.',
       };
 
   @override
