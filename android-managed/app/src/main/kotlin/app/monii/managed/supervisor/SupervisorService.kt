@@ -7,22 +7,36 @@ import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ServiceInfo
+import android.os.BatteryManager
 import android.os.Build
 import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
 import androidx.core.app.NotificationCompat
 import app.monii.managed.R
+import app.monii.managed.admin.AdminManager
+import app.monii.managed.commands.CommandDispatcher
+import app.monii.managed.identity.DeviceStore
+import app.monii.managed.repo.MoniiRepository
 import app.monii.managed.survival.SurvivalLog
+import app.monii.managed.sync.SyncScheduler
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
 
 /**
- * Spike #1 anchor. It does nothing useful yet — it only proves the foreground
- * service can stay alive. In the real managed app this becomes the supervisor
- * that starts typed child services (enforcement, vpn, location, screen-view).
+ * The managed-app anchor. Keeps a foreground service alive (survival, from spike
+ * #1) AND, once paired, runs a fast sync loop every 60s: heartbeat + flush events
+ * + pull and execute commands. WorkManager (SyncWorker) is the slower backstop for
+ * when the OEM kills this service.
  *
- *   onStartCommand ─► startForeground(specialUse) ─► heartbeat loop (15s)
- *        ▲                                                 │
- *        └──── START_STICKY / BootReceiver / Watchdog ◄────┘   (restart paths)
+ *   onStartCommand ─► startForeground ─► survival heartbeat (15s, local)
+ *                                     └► sync loop (60s, backend) when paired
  */
 class SupervisorService : Service() {
 
@@ -33,6 +47,9 @@ class SupervisorService : Service() {
             handler.postDelayed(this, HEARTBEAT_MS)
         }
     }
+
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+    private var syncJob: Job? = null
 
     override fun onCreate() {
         super.onCreate()
@@ -49,12 +66,38 @@ class SupervisorService : Service() {
         running = true
         handler.removeCallbacks(heartbeat)
         handler.post(heartbeat)
+        SyncScheduler.schedule(this)
+        startSyncLoop()
         return START_STICKY
     }
 
+    private fun startSyncLoop() {
+        if (syncJob?.isActive == true) return
+        val app = applicationContext
+        val store = DeviceStore(app)
+        val repo = MoniiRepository(app, store)
+        val dispatcher = CommandDispatcher(app, repo, AdminManager(app))
+        syncJob = scope.launch {
+            while (isActive) {
+                if (store.isPaired()) {
+                    runCatching {
+                        repo.heartbeat(batteryPct())
+                        repo.flushEvents()
+                        dispatcher.syncAndExecute()
+                    }
+                }
+                delay(SYNC_MS)
+            }
+        }
+    }
+
+    private fun batteryPct(): Int? {
+        val bm = getSystemService(BatteryManager::class.java) ?: return null
+        val level = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)
+        return if (level in 0..100) level else null
+    }
+
     override fun onTaskRemoved(rootIntent: Intent?) {
-        // User swiped the app away. Log it; START_STICKY / the watchdog bring us
-        // back, so we can measure swipe-away survival per OEM.
         SurvivalLog.record(this, SurvivalLog.TASK_REMOVED)
         super.onTaskRemoved(rootIntent)
     }
@@ -62,6 +105,7 @@ class SupervisorService : Service() {
     override fun onDestroy() {
         running = false
         handler.removeCallbacks(heartbeat)
+        scope.cancel()
         SurvivalLog.record(this, SurvivalLog.DESTROY)
         super.onDestroy()
     }
@@ -100,6 +144,7 @@ class SupervisorService : Service() {
         private const val CHANNEL_ID = "monii_supervisor"
         private const val NOTIF_ID = 1001
         private const val HEARTBEAT_MS = 15_000L
+        private const val SYNC_MS = 60_000L
 
         @Volatile
         var running = false
