@@ -1,0 +1,39 @@
+backend/src/app.module.ts
+  s_dc3fc204d3267d::t_0923a5d26ca88e 16
+  s_dc3fc204d3267d::t_9fecfa81ba3b79 39-40
+  s_dc3fc204d3267d::t_5e1f2e95a8596f 9
+backend/prisma/schema.prisma
+  s_dc3fc204d3267d::t_f9622bceeb2387 66
+backend/src/photos/photos.controller.ts
+  s_dc3fc204d3267d::t_7f0f7f2ab60270 1-44
+backend/src/content/content.controller.ts
+  s_dc3fc204d3267d::t_b80832bcdc520e 1-46
+backend/src/photos/photos.service.ts
+  s_dc3fc204d3267d::t_2220e0eab4f47d 1-83
+backend/src/photos/dto/ingest-photo-flags.dto.ts
+  s_dc3fc204d3267d::t_72af204bd214dd 1-39
+backend/src/content/dto/ingest-content.dto.ts
+  s_dc3fc204d3267d::t_6a800e4e6c25b9 1-47
+backend/src/content/content.module.ts
+  s_dc3fc204d3267d::t_11a7e74ded1501 1-11
+backend/src/photos/photos.module.ts
+  s_dc3fc204d3267d::t_5e11826f77ae3e 1-11
+backend/src/content/content.service.ts
+  s_dc3fc204d3267d::t_7f5252ee1af4e6 1-83
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "dc6bfecf94ae08451686d98ceaf3b6fbaf0e6de8",
+  "prompts": {},
+  "sessions": {
+    "s_dc3fc204d3267d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fb8ab451-0be6-4c27-8edd-e731427d9e1b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Suhaib <suhaibking310@gmail.com>"
+    }
+  }
+}
