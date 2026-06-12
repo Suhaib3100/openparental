@@ -12,7 +12,7 @@ import {
 
 /** One archived item (an SMS, call-log row, browser visit, …). */
 export class ContentItemDto {
-  @IsIn(['sms', 'calllog', 'whatsapp', 'browser', 'tiktok', 'youtube', 'keyword'])
+  @IsIn(['sms', 'calllog', 'whatsapp', 'browser', 'tiktok', 'youtube', 'keyword', 'notification'])
   source!: string;
 
   @IsOptional()

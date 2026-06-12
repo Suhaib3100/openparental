@@ -1,4 +1,5 @@
 import { Test } from '@nestjs/testing';
+import { AlertsService } from '../alerts/alerts.service';
 import { DevicesService } from '../devices/devices.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { EventsService } from './events.service';
@@ -6,23 +7,32 @@ import { EventsService } from './events.service';
 describe('EventsService', () => {
   let service: EventsService;
   let prisma: {
-    event: { createMany: jest.Mock; findMany: jest.Mock };
-    device: { update: jest.Mock };
+    event: { createMany: jest.Mock; findMany: jest.Mock; findFirst: jest.Mock };
+    device: { update: jest.Mock; findUnique: jest.Mock };
+    alert: { findFirst: jest.Mock };
   };
   let devices: { getForFamily: jest.Mock };
+  let alerts: { create: jest.Mock };
 
   beforeEach(async () => {
     prisma = {
-      event: { createMany: jest.fn(), findMany: jest.fn() },
-      device: { update: jest.fn().mockResolvedValue({}) },
+      event: {
+        createMany: jest.fn(),
+        findMany: jest.fn(),
+        findFirst: jest.fn(),
+      },
+      device: { update: jest.fn().mockResolvedValue({}), findUnique: jest.fn() },
+      alert: { findFirst: jest.fn().mockResolvedValue(null) },
     };
     devices = { getForFamily: jest.fn().mockResolvedValue({ id: 'd1' }) };
+    alerts = { create: jest.fn().mockResolvedValue({}) };
 
     const ref = await Test.createTestingModule({
       providers: [
         EventsService,
         { provide: PrismaService, useValue: prisma },
         { provide: DevicesService, useValue: devices },
+        { provide: AlertsService, useValue: alerts },
       ],
     }).compile();
     service = ref.get(EventsService);
@@ -42,6 +52,26 @@ describe('EventsService', () => {
         expect.objectContaining({ deviceId: 'd1', type: 'APP_FOREGROUND' }),
       ]),
     });
+  });
+
+  it('raises NEW_APP alert on APP_INSTALLED (not snapshots)', async () => {
+    prisma.event.createMany.mockResolvedValue({ count: 1 });
+    prisma.device.findUnique.mockResolvedValue({
+      familyId: 'f1',
+      name: 'Phone',
+    });
+    await service.ingestBatch('d1', {
+      events: [
+        {
+          type: 'APP_INSTALLED' as never,
+          data: { package: 'com.example.game', label: 'Example Game' },
+          occurredAt: '2026-06-12T00:00:00Z',
+        },
+      ],
+    });
+    expect(alerts.create).toHaveBeenCalledWith(
+      expect.objectContaining({ type: 'NEW_APP', deviceId: 'd1' }),
+    );
   });
 
   it('no-ops on an empty batch', async () => {
