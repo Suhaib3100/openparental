@@ -1,0 +1,85 @@
+app-parent/lib/screens/devices_tab.dart
+  s_b8f7e9adcfff54::t_96ab01bc60962d 30-93
+  s_b8f7e9adcfff54::t_4cb8868019f83f 224-227,231
+  s_b8f7e9adcfff54::t_20fb0ad7664833 5-6,11,19-21,24-29,94-95,110,120,145-153,155,161,165,179,201,220-221,232-233,236,238-240,244-245,248-274,276-277,279,295-305,325,359
+  s_b8f7e9adcfff54::t_4ad4d4a27f5eab 246
+  s_b8f7e9adcfff54::t_d977be3840f1e2 14
+  s_dc3fc204d3267d::t_7ee37cee914334 234-235
+  s_b8f7e9adcfff54::t_18b387d160e315 15
+  s_b8f7e9adcfff54::t_452367ed60ba8c 241-243
+app-parent/lib/widgets/notice_row.dart
+  s_b8f7e9adcfff54::t_87493374a93b6e 1-85
+app-parent/lib/screens/alerts_tab.dart
+  s_b8f7e9adcfff54::t_bf377084fd65e3 4-6,9,12,18-20,23,25-29,33,36-37,39-41,44-53,56-79
+app-parent/lib/widgets/live_location_preview.dart
+  s_dc3fc204d3267d::t_325085d81ffeef 7
+  s_b8f7e9adcfff54::t_37fcca678b3195 1-6,8-60
+app-parent/lib/widgets/device_dashboard.dart
+  s_b8f7e9adcfff54::t_00eec01cad6029 1-8,11,18-49,51-52,60-80,82-88,90-154,156-321
+  s_dc3fc204d3267d::t_d16d6705eceb6f 81
+  s_dc3fc204d3267d::t_e5b6b966a84e1e 89
+  s_b8f7e9adcfff54::t_36ab5da693c679 155
+  s_b8f7e9adcfff54::t_2a6ce6090a2e80 9-10,12-17
+  s_b8f7e9adcfff54::t_dca1270fb230eb 50,53-59
+app-parent/lib/screens/alerts_requests_screen.dart
+  s_b8f7e9adcfff54::t_c7bc3dc1b6160c 1-118
+app-parent/lib/widgets/usage_report_preview.dart
+  s_b8f7e9adcfff54::t_1a395b3e5a906f 1-66
+app-parent/lib/screens/device_info_screen.dart
+  s_b8f7e9adcfff54::t_bcc91cae0d28cc 7,15,21,33,35-44,71-113
+app-parent/lib/features/monii_features.dart
+  s_b8f7e9adcfff54::t_d03d633ed62722 1-7,9-70,72-284
+  s_dc3fc204d3267d::t_0642f612ae7505 71
+  s_dc3fc204d3267d::t_8fc9cee05d59b0 8
+app-parent/lib/screens/feature_feed_screen.dart
+  s_b8f7e9adcfff54::t_12d72e92291406 2-3,7,10-11,26,29,32-33,36-41,45-119,122-137,148-149,164-167,176,185-220,226-238
+  s_b8f7e9adcfff54::t_9a86cb106a5ec3 1,4-6,8-9,12-25,27-28,30-31,34-35,42-44,120-121,138-147,150-163,168-175,177-184,221-225,239
+app-parent/lib/screens/home_screen.dart
+  s_b8f7e9adcfff54::t_951c085d07b5a7 7
+  s_b8f7e9adcfff54::t_06a144830acbe1 35,40
+app-parent/lib/screens/check_permissions_screen.dart
+  s_b8f7e9adcfff54::t_b81dd8030dd976 1,3-4,6-9,12-15,55-56,59-60,67,74,98,106-107,120,139-144
+  s_b8f7e9adcfff54::t_943607a2aa8c78 2,5,10-11,16-54,57-58,61-66,68-73,75-97,99-105,108-119,121-138
+app-parent/lib/api/models.dart
+  s_b8f7e9adcfff54::t_f4c37b8117ebd6 132-244
+app-parent/lib/screens/blocked_apps_screen.dart
+  s_b8f7e9adcfff54::t_cb9f8a518f8b00 53
+app-parent/lib/api/api_client.dart
+  s_b8f7e9adcfff54::t_e4343e41772ac6 157-217
+app-parent/lib/screens/live_monitoring_screen.dart
+  s_b8f7e9adcfff54::t_8cb2d00877a973 1-5,7-19,21-24,27-83
+  s_dc3fc204d3267d::t_219bfb0d1181f6 20,25-26
+  s_dc3fc204d3267d::t_cc55c7b486ea6c 6
+app-parent/lib/widgets/feature_tile.dart
+  s_b8f7e9adcfff54::t_e75bb1989d4edc 48,55,67-94
+app-parent/lib/navigation/feature_navigator.dart
+  s_b8f7e9adcfff54::t_cda7f91c0f0561 1-6,15-158
+  s_dc3fc204d3267d::t_f13890416e5fad 7-14
+app-parent/lib/screens/usage_report_screen.dart
+  s_b8f7e9adcfff54::t_7cce06057ee600 1,3-4,6-8,11-14,50-51,54-57,62-63,110-112,122,134-135,145-147,149-152
+  s_b8f7e9adcfff54::t_1527ddd19d7e28 2,5,9-10,15-49,52-53,58-61,64-109,113-121,123-133,136-144,148
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "25061720f952728cbc776421a1ed571a3102f8a9",
+  "prompts": {},
+  "sessions": {
+    "s_b8f7e9adcfff54": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "65c74276-6ca2-4c64-bc47-5ca140cb74cd",
+        "model": "composer-2.5"
+      },
+      "human_author": "Suhaib <suhaibking310@gmail.com>"
+    },
+    "s_dc3fc204d3267d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fb8ab451-0be6-4c27-8edd-e731427d9e1b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Suhaib <suhaibking310@gmail.com>"
+    }
+  }
+}
