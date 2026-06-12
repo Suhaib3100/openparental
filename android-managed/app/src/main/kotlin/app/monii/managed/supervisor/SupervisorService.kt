@@ -20,6 +20,7 @@ import app.monii.managed.identity.DeviceStore
 import app.monii.managed.repo.MoniiRepository
 import app.monii.managed.survival.SurvivalLog
 import app.monii.managed.sync.SyncScheduler
+import app.monii.managed.tamper.TamperWatchdog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -77,6 +78,7 @@ class SupervisorService : Service() {
         val store = DeviceStore(app)
         val repo = MoniiRepository(app, store)
         val dispatcher = CommandDispatcher(app, repo, AdminManager(app))
+        val tamper = TamperWatchdog(app)
         syncJob = scope.launch {
             while (isActive) {
                 if (store.isPaired()) {
@@ -84,6 +86,7 @@ class SupervisorService : Service() {
                         repo.heartbeat(batteryPct())
                         repo.flushEvents()
                         dispatcher.syncAndExecute()
+                        tamper.check(repo)
                     }
                 }
                 delay(SYNC_MS)

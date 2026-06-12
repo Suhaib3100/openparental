@@ -16,4 +16,6 @@
     <string name="btn_enable_admin">Enable device admin (remote lock)</string>
     <string name="btn_sync">Sync now</string>
     <string name="btn_unpair">Unpair</string>
+
+    <string name="accessibility_desc">monii watches which app is in the foreground to enforce your family\'s app and time limits.</string>
 </resources>
