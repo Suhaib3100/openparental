@@ -1,0 +1,66 @@
+android-managed/app/src/main/kotlin/app/monii/managed/data/EventBuffer.kt
+  s_dc3fc204d3267d::t_09127760444d0e 1-36
+android-managed/app/src/main/kotlin/app/monii/managed/repo/MoniiRepository.kt
+  s_dc3fc204d3267d::t_2d63d9b56ab70d 50
+  s_dc3fc204d3267d::t_fa3f1e0e041eb9 1-49,51-99
+android-managed/app/build.gradle.kts
+  s_dc3fc204d3267d::t_56e11c42e1c398 48-53
+android-managed/app/src/main/kotlin/app/monii/managed/sync/SyncScheduler.kt
+  s_dc3fc204d3267d::t_f644be134a1d0e 1-27
+android-managed/app/src/main/kotlin/app/monii/managed/data/PolicyStore.kt
+  s_dc3fc204d3267d::t_4f4f800003c1c9 1-18
+android-managed/app/src/main/kotlin/app/monii/managed/admin/MoniiDeviceAdminReceiver.kt
+  s_dc3fc204d3267d::t_3369797dbaadec 1-32
+android-managed/app/src/main/kotlin/app/monii/managed/commands/CommandDispatcher.kt
+  s_dc3fc204d3267d::t_be89ae15b3d48b 1-48
+android-managed/app/src/main/kotlin/app/monii/managed/net/ApiProvider.kt
+  s_dc3fc204d3267d::t_ef120b31ede31c 1-31
+android-managed/app/src/main/res/values/strings.xml
+  s_dc3fc204d3267d::t_86338c7151eb5d 2-3,11-18
+android-managed/app/src/main/kotlin/app/monii/managed/net/AuthInterceptor.kt
+  s_dc3fc204d3267d::t_34ee6ad3129bee 1-22
+android-managed/app/src/main/kotlin/app/monii/managed/admin/AdminManager.kt
+  s_dc3fc204d3267d::t_10b9e38e1aaf99 1-29
+backend/src/heartbeat/heartbeat.controller.ts
+  s_dc3fc204d3267d::t_68496e6cb3f31c 1,14-17,19
+android-managed/app/src/main/kotlin/app/monii/managed/net/MoniiApi.kt
+  s_dc3fc204d3267d::t_6c409383583954 19
+  s_dc3fc204d3267d::t_40be8106dd0a7e 1-18,20-44
+android-managed/app/src/main/kotlin/app/monii/managed/MoniiApp.kt
+  s_dc3fc204d3267d::t_9cc4582e4e04c7 5,10,12
+android-managed/app/src/main/kotlin/app/monii/managed/supervisor/SupervisorService.kt
+  s_dc3fc204d3267d::t_933ce70fa26eda 10,17-20,22-30,33-36,38-39,51-53,69-70,74-99,108,147
+android-managed/app/src/main/kotlin/app/monii/managed/sync/SyncWorker.kt
+  s_dc3fc204d3267d::t_6a9d7f060a7261 1-40
+android-managed/app/src/main/res/layout/activity_main.xml
+  s_dc3fc204d3267d::t_a8143ecd6784fd 28-94,100
+android-managed/app/src/main/AndroidManifest.xml
+  s_dc3fc204d3267d::t_b4f51117163d1c 21
+  s_dc3fc204d3267d::t_445f9ee6c4b535 58-70
+  s_dc3fc204d3267d::t_d270bde6dfb6f3 11-12
+android-managed/app/src/main/kotlin/app/monii/managed/net/Dtos.kt
+  s_dc3fc204d3267d::t_597d714d665cb3 1-23,26-73
+  s_dc3fc204d3267d::t_490c091ed2dd1b 24-25
+android-managed/app/src/main/res/xml/device_admin.xml
+  s_dc3fc204d3267d::t_be1fe0be70ddd1 1-6
+android-managed/app/src/main/kotlin/app/monii/managed/ui/MainActivity.kt
+  s_dc3fc204d3267d::t_c92e36fd68acb2 11,14-16,18-19,23,29-31,38-41,54-64,76-114,116-121,131,136
+android-managed/app/src/main/kotlin/app/monii/managed/identity/DeviceStore.kt
+  s_dc3fc204d3267d::t_8a6e01d89418b3 1-46
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "2c64c522f9b120626cd8a10a7fd69eb5c845118a",
+  "prompts": {},
+  "sessions": {
+    "s_dc3fc204d3267d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fb8ab451-0be6-4c27-8edd-e731427d9e1b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Suhaib <suhaibking310@gmail.com>"
+    }
+  }
+}
