@@ -1,7 +1,12 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("com.google.gms.google-services")
+}
+
+// FCM is optional: google-services.json is never committed (see .gitignore).
+// Drop your own Firebase config in app/ and the plugin activates.
+if (file("google-services.json").exists()) {
+    apply(plugin = "com.google.gms.google-services")
 }
 
 android {
