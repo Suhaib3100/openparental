@@ -54,32 +54,32 @@ class OnboardingActivity : AppCompatActivity() {
         steps = listOf(
             Step(
                 "Notifications",
-                "Let monii show its ongoing status.",
+                "Let OpenParental show its ongoing status.",
                 { notificationsGranted() },
                 { requestNotifications() },
                 optional = true,
             ),
             Step(
                 "Unrestricted battery",
-                "Stops the system from killing monii in the background.",
+                "Stops the system from killing OpenParental in the background.",
                 { isIgnoringBattery() },
                 { requestIgnoreBattery() },
             ),
             Step(
                 "Accessibility",
-                "Lets monii enforce app and time limits.",
+                "Lets OpenParental enforce app and time limits.",
                 { SpecialAccess.isAccessibilityEnabled(this) },
                 { startSafe(SpecialAccess.accessibilitySettingsIntent()) },
             ),
             Step(
                 "Usage access",
-                "Lets monii measure screen time.",
+                "Lets OpenParental measure screen time.",
                 { SpecialAccess.isUsageAccessGranted(this) },
                 { startSafe(SpecialAccess.usageAccessSettingsIntent()) },
             ),
             Step(
                 "Device admin",
-                "Lets monii lock the device remotely.",
+                "Lets OpenParental lock the device remotely.",
                 { admin.isActive() },
                 { startSafe(admin.enableIntent()) },
             ),
@@ -92,7 +92,7 @@ class OnboardingActivity : AppCompatActivity() {
             ),
             Step(
                 "Auto-start (some phones)",
-                "On Xiaomi/Oppo/Vivo, allow monii to start on boot.",
+                "On Xiaomi/Oppo/Vivo, allow OpenParental to start on boot.",
                 { false },
                 { openOemAutostart() },
                 optional = true,

@@ -24,6 +24,6 @@ class AdminManager(context: Context) {
             .putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, component)
             .putExtra(
                 DevicePolicyManager.EXTRA_ADD_EXPLANATION,
-                "monii needs device admin to lock the device remotely.",
+                "OpenParental needs device admin to lock the device remotely.",
             )
 }

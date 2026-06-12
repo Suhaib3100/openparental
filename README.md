@@ -48,6 +48,8 @@ teenager can verify beats spyware they'll route around.**
 | 🔗 | **Pairing** | Parent generates a short code → child app claims it → device gets its own scoped token |
 | 🔒 | **Remote lock & ping** | Command spine: enqueue → push/poll → device ack → result, fully audited |
 | 🚫 | **App blocking** | Versioned policy engine — blocklists, per-app daily limits, schedules (e.g. no games after 9pm) |
+| 🌐 | **DNS content filter** | DNS-only `VpnService` blocks filtered domains — no traffic inspection, no MITM |
+| 🧭 | **Guided onboarding** | Child-app setup walks through every grant — battery, accessibility, usage, admin, filter, OEM auto-start |
 | ⏱️ | **Screen-time limits** | Accessibility service bounces blocked / over-limit / out-of-schedule apps |
 | 🚨 | **Tamper evidence** | Disabled accessibility, revoked permissions, force-stop, "went dark" — all surfaced as alerts |
 | 🌙 | **Went-dark reconciler** | Presence tracked in Redis, reconciled from Postgres — a Redis restart never causes a false alarm |
@@ -126,8 +128,9 @@ on your dashboard.
 
 - [x] **v1 — enforcement, limits, tamper-evidence, location, alerts** (built, CI-green)
 - [ ] **FCM push** — instant command delivery (device polls every 60s today; needs your Firebase project)
-- [ ] **Per-OEM onboarding** — guided battery-exemption + special-access flow (Xiaomi/Samsung/etc.)
-- [ ] **VPN content filter** — DNS-based filtering on a maintained filter base
+- [x] **Guided onboarding** — per-permission grant flow in the child app (incl. OEM auto-start)
+- [x] **DNS content filter** — DNS-only `VpnService`, domain blocklists
+- [ ] **Filter lists** — maintained blocklist sources + per-family categories for the content filter
 - [ ] **v1.1 — live painting overlay**
 - [ ] **v1.5 — consented WebRTC screen-view + AMBER mode** (text archive + on-device photo screening)
 

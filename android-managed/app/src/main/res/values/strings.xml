@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">monii (managed)</string>
+    <string name="app_name">OpenParental (managed)</string>
     <string name="spike_subtitle">Managed device app. Pair it with the parent app, then keep it alive.</string>
-    <string name="fgs_title">monii</string>
+    <string name="fgs_title">OpenParental</string>
     <string name="fgs_text">Supervisor running</string>
     <string name="btn_start">Start service</string>
     <string name="btn_refresh">Refresh</string>
@@ -17,11 +17,11 @@
     <string name="btn_sync">Sync now</string>
     <string name="btn_unpair">Unpair</string>
 
-    <string name="accessibility_desc">monii watches which app is in the foreground to enforce your family\'s app and time limits.</string>
+    <string name="accessibility_desc">OpenParental watches which app is in the foreground to enforce your family\'s app and time limits.</string>
 
     <string name="btn_setup">Finish setup (permissions)</string>
     <string name="onb_title">Finish setup</string>
-    <string name="onb_subtitle">Grant these so monii can protect this device. You can change them anytime in Settings.</string>
+    <string name="onb_subtitle">Grant these so OpenParental can protect this device. You can change them anytime in Settings.</string>
     <string name="onb_open">Open</string>
     <string name="onb_done">Done</string>
 </resources>

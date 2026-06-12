@@ -40,7 +40,7 @@ class VpnFilterService : VpnService() {
     private fun start() {
         if (running) return
         val builder = Builder()
-            .setSession("monii filter")
+            .setSession("OpenParental filter")
             .addAddress(VPN_ADDR, 32)
             .addDnsServer(DNS_SENTINEL)
             .addRoute(DNS_SENTINEL, 32)

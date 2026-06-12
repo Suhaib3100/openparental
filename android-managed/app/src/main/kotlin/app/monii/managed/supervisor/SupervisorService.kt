@@ -139,10 +139,10 @@ class SupervisorService : Service() {
         if (mgr.getNotificationChannel(CHANNEL_ID) == null) {
             val ch = NotificationChannel(
                 CHANNEL_ID,
-                "Monii supervisor",
+                "OpenParental supervisor",
                 NotificationManager.IMPORTANCE_LOW,
             )
-            ch.description = "Keeps monii running."
+            ch.description = "Keeps OpenParental running."
             mgr.createNotificationChannel(ch)
         }
     }
