@@ -6,12 +6,14 @@ import { AlertsModule } from './alerts/alerts.module';
 import { AuditModule } from './audit/audit.module';
 import { AuthModule } from './auth/auth.module';
 import { CommandsModule } from './commands/commands.module';
+import { ContentModule } from './content/content.module';
 import { DevicesModule } from './devices/devices.module';
 import { EventsModule } from './events/events.module';
 import { FcmModule } from './fcm/fcm.module';
 import { HeartbeatModule } from './heartbeat/heartbeat.module';
 import { LocationsModule } from './locations/locations.module';
 import { PairingModule } from './pairing/pairing.module';
+import { PhotosModule } from './photos/photos.module';
 import { PoliciesModule } from './policies/policies.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { RedisModule } from './redis/redis.module';
@@ -34,6 +36,8 @@ import { TamperModule } from './tamper/tamper.module';
     TamperModule,
     HeartbeatModule,
     LocationsModule,
+    ContentModule,
+    PhotosModule,
   ],
   controllers: [AppController],
 })
