@@ -1,0 +1,39 @@
+android-managed/app/src/main/kotlin/app/monii/managed/enforcement/PolicyRules.kt
+  s_dc3fc204d3267d::t_d066cdcb4dfabe 1-65
+android-managed/app/src/main/kotlin/app/monii/managed/accessibility/MonitorAccessibilityService.kt
+  s_dc3fc204d3267d::t_b1ba9f7ac229ba 1-24
+android-managed/app/src/main/kotlin/app/monii/managed/enforcement/UsageTracker.kt
+  s_dc3fc204d3267d::t_48ff95e77804e5 1-33
+android-managed/app/src/main/kotlin/app/monii/managed/tamper/TamperWatchdog.kt
+  s_dc3fc204d3267d::t_11244b19970d1f 1-38
+android-managed/app/src/main/kotlin/app/monii/managed/enforcement/EnforcementController.kt
+  s_dc3fc204d3267d::t_552db8dfb1626e 1-34
+android-managed/app/src/main/res/xml/accessibility_service_config.xml
+  s_dc3fc204d3267d::t_9b489059786dab 1-7
+android-managed/app/src/main/res/values/strings.xml
+  s_dc3fc204d3267d::t_bfc49a6abf765f 19-20
+android-managed/app/src/main/kotlin/app/monii/managed/supervisor/SupervisorService.kt
+  s_dc3fc204d3267d::t_4c8d504059f388 23
+  s_dc3fc204d3267d::t_cd554118644765 81,89
+android-managed/app/src/main/kotlin/app/monii/managed/permissions/SpecialAccess.kt
+  s_dc3fc204d3267d::t_1e319bbbbfb7bd 1-47
+android-managed/app/src/main/AndroidManifest.xml
+  s_dc3fc204d3267d::t_5824dfbb036c66 13-18
+  s_dc3fc204d3267d::t_774a2847bb9776 77-89
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "c8a59213e097f90f0d00e785223cdba681a39569",
+  "prompts": {},
+  "sessions": {
+    "s_dc3fc204d3267d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fb8ab451-0be6-4c27-8edd-e731427d9e1b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Suhaib <suhaibking310@gmail.com>"
+    }
+  }
+}
