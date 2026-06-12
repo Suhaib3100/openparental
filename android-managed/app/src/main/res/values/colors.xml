@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- OpenParental design tokens — kept in sync with app-parent/lib/theme/app_theme.dart.
+     Warm neutrals + a calm guardian teal; status hues are reserved and deliberately
+     distinct from the brand color. -->
+<resources>
+    <!-- Brand -->
+    <color name="op_brand">#115E59</color>
+    <color name="op_brand_container">#E3EEEC</color>
+
+    <!-- Warm neutrals -->
+    <color name="op_surface">#FAF8F5</color>
+    <color name="op_card">#FFFFFF</color>
+    <color name="op_ink">#1A1714</color>
+    <color name="op_muted">#6B635B</color>
+    <color name="op_line">#EBE5DD</color>
+    <color name="op_neutral_container">#F1EDE7</color>
+
+    <!-- Status -->
+    <color name="op_online">#2E9E6B</color>
+    <color name="op_online_container">#E6F3EB</color>
+    <color name="op_attention">#C98A2B</color>
+    <color name="op_attention_container">#F8EFDE</color>
+    <color name="op_alert">#C0492F</color>
+    <color name="op_offline">#8A817A</color>
+</resources>

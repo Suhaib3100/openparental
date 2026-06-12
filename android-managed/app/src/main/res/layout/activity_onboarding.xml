@@ -1,30 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:background="@color/op_surface"
+    android:fillViewport="true"
+    android:scrollbars="none">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:paddingHorizontal="24dp"
+        android:paddingTop="28dp"
+        android:paddingBottom="32dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
             android:text="@string/onb_title"
-            android:textSize="26sp"
-            android:textStyle="bold" />
+            android:textColor="@color/op_ink"
+            android:textSize="28sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="6dp"
-            android:paddingBottom="20dp"
+            android:layout_marginTop="6dp"
+            android:lineSpacingExtra="2dp"
             android:text="@string/onb_subtitle"
-            android:textSize="14sp"
-            android:alpha="0.7" />
+            android:textColor="@color/op_muted"
+            android:textSize="15sp" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:indicatorColor="@color/op_brand"
+            app:trackColor="@color/op_line"
+            app:trackCornerRadius="6dp"
+            app:trackThickness="8dp" />
+
+        <TextView
+            android:id="@+id/txtProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
+            android:textColor="@color/op_muted"
+            android:textSize="13sp" />
 
         <LinearLayout
             android:id="@+id/steps"
@@ -35,9 +60,13 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnDone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:paddingVertical="14dp"
-            android:text="@string/onb_done" />
+            android:layout_height="56dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="sans-serif-medium"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/onb_done"
+            android:textSize="16sp"
+            app:cornerRadius="28dp" />
     </LinearLayout>
 </ScrollView>

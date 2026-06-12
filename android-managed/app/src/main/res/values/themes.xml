@@ -1,3 +1,18 @@
 <resources>
-    <style name="Theme.Monii" parent="Theme.Material3.DayNight.NoActionBar" />
+    <!-- Light-only on purpose: the child app keeps one controlled palette. -->
+    <style name="Theme.Monii" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/op_brand</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="colorPrimaryContainer">@color/op_brand_container</item>
+        <item name="colorOnPrimaryContainer">@color/op_brand</item>
+        <item name="colorError">@color/op_alert</item>
+        <item name="android:colorBackground">@color/op_surface</item>
+        <item name="colorSurface">@color/op_card</item>
+        <item name="colorOnSurface">@color/op_ink</item>
+        <item name="colorOnSurfaceVariant">@color/op_muted</item>
+        <item name="colorOutline">@color/op_line</item>
+        <item name="colorOutlineVariant">@color/op_line</item>
+        <item name="android:statusBarColor">@color/op_surface</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
 </resources>

@@ -3,15 +3,21 @@ package app.monii.managed.ui
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.ColorStateList
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.PowerManager
 import android.provider.Settings
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import app.monii.managed.R
 import app.monii.managed.admin.AdminManager
 import app.monii.managed.commands.CommandDispatcher
 import app.monii.managed.databinding.ActivityMainBinding
@@ -26,9 +32,9 @@ import java.util.Date
 import java.util.Locale
 
 /**
- * Device-side console: pair with the backend, see connection + admin state, and
- * (from the spike) the survival diagnostics. The real product hides most of this;
- * it's a developer console for now.
+ * Child-device home. Unpaired: a single pairing flow. Paired: a status hero
+ * (Protected / Action needed) + tappable status rows. The old developer console
+ * lives on under the collapsed Diagnostics section.
  */
 class MainActivity : AppCompatActivity() {
 
@@ -58,17 +64,20 @@ class MainActivity : AppCompatActivity() {
         binding.btnUnpair.setOnClickListener {
             store.clearPairing(); toast("Unpaired"); render()
         }
-        binding.btnEnableAdmin.setOnClickListener {
+        binding.rowAdmin.setOnClickListener {
             runCatching { startActivity(admin.enableIntent()) }
         }
-
-        binding.btnStart.setOnClickListener { SupervisorService.start(this); render() }
-        binding.btnRefresh.setOnClickListener { render() }
-        binding.btnBattery.setOnClickListener { requestIgnoreBatteryOptimizations() }
-        binding.btnAutostart.setOnClickListener { openOemAutostartSettings() }
+        binding.rowBattery.setOnClickListener { requestIgnoreBatteryOptimizations() }
         binding.btnSetup.setOnClickListener {
             startActivity(Intent(this, OnboardingActivity::class.java))
         }
+
+        binding.btnDiagnostics.setOnClickListener {
+            binding.groupDiagnostics.isVisible = !binding.groupDiagnostics.isVisible
+        }
+        binding.btnStart.setOnClickListener { SupervisorService.start(this); render() }
+        binding.btnRefresh.setOnClickListener { render() }
+        binding.btnAutostart.setOnClickListener { openOemAutostartSettings() }
     }
 
     override fun onResume() {
@@ -116,25 +125,80 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun render() {
-        binding.txtConnection.text = buildString {
-            appendLine("Backend: ${store.baseUrl()}")
-            appendLine("Paired:  ${store.isPaired()}")
-            store.deviceId()?.let { appendLine("Device:  $it") }
-            appendLine("Admin:   ${if (admin.isActive()) "active" else "not enabled"}")
-        }
+        val paired = store.isPaired()
         val s = SurvivalLog.snapshot(this)
         val now = System.currentTimeMillis()
+        val serviceOn = SupervisorService.running
+        val adminOn = admin.isActive()
+        val batteryOk = isIgnoringBatteryOptimizations()
+
+        binding.groupPairing.isVisible = !paired
+        binding.groupStatus.isVisible = paired
+
+        // Hero state
+        when {
+            !paired -> hero(
+                R.color.op_brand_container, "🔗",
+                getString(R.string.hero_welcome), getString(R.string.hero_welcome_sub),
+            )
+            serviceOn && adminOn && batteryOk -> hero(
+                R.color.op_online_container, "🛡️",
+                getString(R.string.hero_protected),
+                "${getString(R.string.row_sync)}: ${ago(s.lastHeartbeatAt, now)}",
+            )
+            else -> {
+                val issues = buildList {
+                    if (!serviceOn) add(getString(R.string.row_service) + " " + getString(R.string.val_stopped).lowercase(Locale.US))
+                    if (!adminOn) add(getString(R.string.row_admin) + " " + getString(R.string.val_off).lowercase(Locale.US))
+                    if (!batteryOk) add(getString(R.string.row_battery) + " " + getString(R.string.val_restricted).lowercase(Locale.US))
+                }
+                hero(
+                    R.color.op_attention_container, "⚠️",
+                    getString(R.string.hero_attention), issues.joinToString(" · "),
+                )
+            }
+        }
+
+        // Status rows
+        binding.valService.text =
+            getString(if (serviceOn) R.string.val_running else R.string.val_stopped)
+        dot(binding.dotService, if (serviceOn) R.color.op_online else R.color.op_alert)
+
+        binding.valAdmin.text = getString(if (adminOn) R.string.val_on else R.string.val_off)
+        dot(binding.dotAdmin, if (adminOn) R.color.op_online else R.color.op_attention)
+
+        binding.valBattery.text =
+            getString(if (batteryOk) R.string.val_unrestricted else R.string.val_restricted)
+        dot(binding.dotBattery, if (batteryOk) R.color.op_online else R.color.op_attention)
+
+        binding.valSync.text = ago(s.lastHeartbeatAt, now)
+        dot(binding.dotSync, if (s.lastHeartbeatAt > 0) R.color.op_online else R.color.op_offline)
+
+        // Diagnostics
         binding.txtStatus.text = buildString {
-            appendLine("Device:  ${Build.MANUFACTURER} ${Build.MODEL}")
-            appendLine("Android: ${Build.VERSION.RELEASE} (API ${Build.VERSION.SDK_INT})")
-            appendLine("Battery-opt ignored: ${isIgnoringBatteryOptimizations()}")
-            appendLine("Service running:   ${SupervisorService.running}")
-            appendLine("Uptime this run:   ${durationSince(s.serviceStartAt, now)}")
-            appendLine("Last heartbeat:    ${ago(s.lastHeartbeatAt, now)}")
-            appendLine("Starts/boot/watchdog: ${s.startCount}/${s.bootCount}/${s.watchdogCount}")
+            appendLine("Backend: ${store.baseUrl()}")
+            appendLine("Device id: ${store.deviceId() ?: "—"}")
+            appendLine("Model: ${Build.MANUFACTURER} ${Build.MODEL}")
+            appendLine("Android ${Build.VERSION.RELEASE} (API ${Build.VERSION.SDK_INT})")
+            appendLine("Uptime this run: ${durationSince(s.serviceStartAt, now)}")
+            appendLine("Last heartbeat: ${ago(s.lastHeartbeatAt, now)}")
+            append("Starts/boot/watchdog: ${s.startCount}/${s.bootCount}/${s.watchdogCount}")
         }
         binding.txtLog.text = SurvivalLog.tail(this)
     }
+
+    private fun hero(@ColorRes bg: Int, icon: String, title: String, sub: String) {
+        binding.cardHero.setCardBackgroundColor(color(bg))
+        binding.txtHeroIcon.text = icon
+        binding.txtHeroTitle.text = title
+        binding.txtHeroSub.text = sub
+    }
+
+    private fun dot(view: View, @ColorRes c: Int) {
+        view.backgroundTintList = ColorStateList.valueOf(color(c))
+    }
+
+    private fun color(@ColorRes id: Int) = ContextCompat.getColor(this, id)
 
     private fun toast(msg: String) = Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
 
@@ -144,8 +208,16 @@ class MainActivity : AppCompatActivity() {
         return "%dh %02dm %02ds".format(secs / 3600, (secs % 3600) / 60, secs % 60)
     }
 
-    private fun ago(then: Long, now: Long): String =
-        if (then <= 0) "never" else "${(now - then) / 1000}s ago (${fmt.format(Date(then))})"
+    private fun ago(then: Long, now: Long): String {
+        if (then <= 0) return getString(R.string.val_never)
+        val secs = (now - then) / 1000
+        return when {
+            secs < 60 -> "${secs}s ago"
+            secs < 3600 -> "${secs / 60}m ago"
+            secs < 86_400 -> "${secs / 3600}h ago"
+            else -> fmt.format(Date(then))
+        }
+    }
 
     private fun requestNotifPermissionIfNeeded() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&

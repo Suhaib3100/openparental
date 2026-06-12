@@ -1,27 +1,58 @@
 <resources>
-    <string name="app_name">OpenParental (managed)</string>
-    <string name="spike_subtitle">Managed device app. Pair it with the parent app, then keep it alive.</string>
+    <string name="app_name">OpenParental</string>
+
+    <!-- Foreground-service notification -->
     <string name="fgs_title">OpenParental</string>
-    <string name="fgs_text">Supervisor running</string>
-    <string name="btn_start">Start service</string>
-    <string name="btn_refresh">Refresh</string>
-    <string name="btn_battery">Allow unrestricted battery</string>
-    <string name="btn_autostart">Open autostart settings (OEM)</string>
-    <string name="log_header">Event log (newest first)</string>
+    <string name="fgs_text">Protection is on</string>
 
-    <string name="conn_header">Backend connection</string>
-    <string name="hint_base_url">Backend URL (e.g. http://10.0.2.2:3000)</string>
-    <string name="hint_code">Pairing code from the parent app</string>
-    <string name="btn_pair">Pair this device</string>
-    <string name="btn_enable_admin">Enable device admin (remote lock)</string>
-    <string name="btn_sync">Sync now</string>
-    <string name="btn_unpair">Unpair</string>
-
+    <!-- System screens -->
     <string name="accessibility_desc">OpenParental watches which app is in the foreground to enforce your family\'s app and time limits.</string>
 
-    <string name="btn_setup">Finish setup (permissions)</string>
+    <!-- Home -->
+    <string name="wordmark">OpenParental</string>
+    <string name="hero_welcome">Welcome</string>
+    <string name="hero_welcome_sub">Pair this device with your parent\'s OpenParental app to begin.</string>
+    <string name="hero_protected">Protected</string>
+    <string name="hero_attention">Action needed</string>
+
+    <string name="pair_title">Connect this device</string>
+    <string name="pair_sub">Ask your parent for the pairing code shown in their OpenParental app.</string>
+    <string name="hint_code">Pairing code</string>
+    <string name="hint_base_url">Server URL</string>
+    <string name="btn_pair">Pair this device</string>
+
+    <string name="label_status">STATUS</string>
+    <string name="row_service">Protection service</string>
+    <string name="row_admin">Device admin</string>
+    <string name="row_battery">Battery</string>
+    <string name="row_sync">Last sync</string>
+    <string name="val_running">Running</string>
+    <string name="val_stopped">Stopped</string>
+    <string name="val_on">On</string>
+    <string name="val_off">Off</string>
+    <string name="val_unrestricted">Unrestricted</string>
+    <string name="val_restricted">Restricted</string>
+    <string name="val_never">Never</string>
+
+    <string name="btn_sync">Sync now</string>
+    <string name="btn_setup">Permissions &amp; setup</string>
+    <string name="btn_unpair">Unpair this device</string>
+
+    <string name="diagnostics">Diagnostics</string>
+    <string name="btn_start">Start service</string>
+    <string name="btn_refresh">Refresh</string>
+    <string name="btn_autostart">Open auto-start settings</string>
+
+    <string name="footer_overt">Visible by design — your parent can see when protection is off.</string>
+
+    <!-- Onboarding -->
     <string name="onb_title">Finish setup</string>
-    <string name="onb_subtitle">Grant these so OpenParental can protect this device. You can change them anytime in Settings.</string>
+    <string name="onb_subtitle">Grant these so OpenParental can protect this device. Everything here is visible to you — nothing runs in secret.</string>
+    <string name="onb_progress">%1$d of %2$d required steps done</string>
     <string name="onb_open">Open</string>
-    <string name="onb_done">Done</string>
+    <string name="onb_done">Do this later</string>
+    <string name="onb_all_set">All set</string>
+    <string name="chip_done">✓ Done</string>
+    <string name="chip_setup">Set up</string>
+    <string name="chip_optional">Optional</string>
 </resources>

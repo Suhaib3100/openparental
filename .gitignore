@@ -45,3 +45,8 @@ backend/fcm-service-account.json
 # Local AI tooling — not part of the project
 .claude/
 .context/
+
+# Local agent tooling + scratch files
+.agents/
+skills-lock.json
+Archive.zip
