@@ -145,4 +145,13 @@ class ApiClient {
   Future<void> markAlertRead(String id) async {
     await _dio.post<dynamic>('/alerts/$id/read');
   }
+
+  // ---- location ----
+
+  Future<DeviceLocation?> latestLocation(String deviceId) async {
+    final r = await _dio.get<dynamic>('/devices/$deviceId/locations/latest');
+    final data = r.data;
+    if (data is Map<String, dynamic>) return DeviceLocation.fromJson(data);
+    return null;
+  }
 }

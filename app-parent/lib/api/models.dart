@@ -106,3 +106,26 @@ class Pairing {
         status: (j['status'] as String?) ?? 'PENDING',
       );
 }
+
+class DeviceLocation {
+  final double lat;
+  final double lng;
+  final double? accuracyM;
+  final DateTime? occurredAt;
+
+  DeviceLocation({
+    required this.lat,
+    required this.lng,
+    this.accuracyM,
+    this.occurredAt,
+  });
+
+  factory DeviceLocation.fromJson(Map<String, dynamic> j) => DeviceLocation(
+        lat: (j['lat'] as num).toDouble(),
+        lng: (j['lng'] as num).toDouble(),
+        accuracyM: (j['accuracyM'] as num?)?.toDouble(),
+        occurredAt: j['occurredAt'] != null
+            ? DateTime.tryParse(j['occurredAt'] as String)
+            : null,
+      );
+}
