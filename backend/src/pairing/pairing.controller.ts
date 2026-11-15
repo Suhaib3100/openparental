@@ -8,6 +8,7 @@ import {
   Post,
   UseGuards,
 } from '@nestjs/common';
+import { ThrottlerGuard } from '@nestjs/throttler';
 import { CurrentUser } from '../common/decorators/current-user.decorator';
 import { JwtAuthGuard } from '../common/guards/jwt-auth.guard';
 import { AuthUser } from '../common/types';
@@ -28,6 +29,7 @@ export class PairingController {
   /** Public: the device authenticates itself via the QR token / code. */
   @Post('claim')
   @HttpCode(HttpStatus.OK)
+  @UseGuards(ThrottlerGuard)
   claim(@Body() dto: ClaimPairingDto) {
     return this.pairing.claim(dto);
   }

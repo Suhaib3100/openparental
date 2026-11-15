@@ -77,12 +77,20 @@ describe('CommandsService', () => {
     });
 
     it('is idempotent: an existing key returns the existing command', async () => {
-      prisma.command.findUnique.mockResolvedValue({ id: 'c0', state: 'ACKED' });
+      prisma.command.findUnique.mockResolvedValue({ id: 'c0', state: 'ACKED', deviceId: 'd1' });
       const res = await service.enqueue('f1', 'd1', {
         type: 'PING' as never,
         idempotencyKey: 'dup',
       });
       expect(res.id).toBe('c0');
+      expect(prisma.command.create).not.toHaveBeenCalled();
+    });
+
+    it("rejects a key that belongs to another device instead of leaking its command", async () => {
+      prisma.command.findUnique.mockResolvedValue({ id: 'cX', state: 'ACKED', deviceId: 'other' });
+      await expect(
+        service.enqueue('f1', 'd1', { type: 'PING' as never, idempotencyKey: 'dup' }),
+      ).rejects.toThrow('idempotencyKey already used');
       expect(prisma.command.create).not.toHaveBeenCalled();
     });
 

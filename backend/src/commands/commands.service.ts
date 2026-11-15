@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Command, CommandType, Prisma } from '@prisma/client';
 import { AuditService } from '../audit/audit.service';
@@ -47,7 +47,14 @@ export class CommandsService {
     const existing = await this.prisma.command.findUnique({
       where: { idempotencyKey },
     });
-    if (existing) return existing;
+    if (existing) {
+      // Idempotency keys are client-supplied and globally unique; never hand back
+      // a command that belongs to a different device (and possibly family).
+      if (existing.deviceId !== deviceId) {
+        throw new ConflictException('idempotencyKey already used');
+      }
+      return existing;
+    }
 
     const command = await this.prisma.command.create({
       data: {

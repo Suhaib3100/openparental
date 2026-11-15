@@ -72,10 +72,31 @@ export class PairingService {
       throw new BadRequestException('pairing expired');
     }
 
-    const { device, deviceSecret } = await this.devices.createForPairing(
-      pairing.familyId,
-      { ...dto, deviceName: dto.deviceName ?? pairing.deviceName ?? undefined },
-    );
+    // Reserve the pairing atomically. Checking status above and writing it later
+    // left a window where two phones typing the same code both got paired.
+    const reserved = await this.prisma.pairing.updateMany({
+      where: { id: pairing.id, status: 'PENDING' },
+      data: { status: 'CLAIMED' },
+    });
+    if (reserved.count === 0) {
+      throw new BadRequestException('pairing already used');
+    }
+
+    let device: Awaited<ReturnType<DevicesService['createForPairing']>>['device'];
+    let deviceSecret: string;
+    try {
+      ({ device, deviceSecret } = await this.devices.createForPairing(
+        pairing.familyId,
+        { ...dto, deviceName: dto.deviceName ?? pairing.deviceName ?? undefined },
+      ));
+    } catch (err) {
+      // Release the slot so the parent's code still works on a retry.
+      await this.prisma.pairing.update({
+        where: { id: pairing.id },
+        data: { status: 'PENDING' },
+      });
+      throw err;
+    }
     const deviceToken = await this.tokens.signDevice(device.id, pairing.familyId);
 
     await this.prisma.pairing.update({

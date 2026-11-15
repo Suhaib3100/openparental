@@ -1,6 +1,13 @@
 export default () => ({
   port: parseInt(process.env.PORT ?? '3000', 10),
   nodeEnv: process.env.NODE_ENV ?? 'development',
+  // Number of reverse-proxy hops (e.g. "1"), so req.ip is the real client.
+  trustProxy: process.env.TRUST_PROXY ?? '',
+  rateLimit: {
+    // Per client IP, per minute, on login / register / refresh / pairing claim /
+    // device re-auth. Stops password and pairing-code guessing.
+    authPerMinute: parseInt(process.env.AUTH_RATE_LIMIT_PER_MINUTE ?? '10', 10),
+  },
   databaseUrl: process.env.DATABASE_URL,
   redisUrl: process.env.REDIS_URL ?? 'redis://localhost:6379',
   jwt: {

@@ -15,6 +15,15 @@ export class TokenService {
     config: ConfigService,
   ) {
     this.secret = config.get<string>('jwt.secret') ?? 'dev-secret-change-me';
+    // Every token type (parent, refresh, device) is signed with this secret.
+    // A guessable secret in production lets anyone mint tokens for any family,
+    // so refuse to boot instead of silently using the dev default.
+    const isProd = config.get<string>('nodeEnv') === 'production';
+    if (isProd && (this.secret.length < 32 || /change-me/.test(this.secret))) {
+      throw new Error(
+        'JWT_SECRET must be set to a random string of 32+ characters in production',
+      );
+    }
     this.accessTtl = config.get<number>('jwt.accessTtl') ?? 900;
     this.refreshTtl = config.get<number>('jwt.refreshTtl') ?? 2592000;
     this.deviceTtl = config.get<number>('jwt.deviceTtl') ?? 31536000;
