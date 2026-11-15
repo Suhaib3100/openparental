@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ThrottlerModule } from '@nestjs/throttler';
 import configuration from './config/configuration';
 import { AppController } from './app.controller';
 import { AlertsModule } from './alerts/alerts.module';
@@ -22,6 +23,18 @@ import { TamperModule } from './tamper/tamper.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true, load: [configuration] }),
+    // Applied per route with @UseGuards(ThrottlerGuard) on credential endpoints
+    // only, so heartbeats and event uploads from child devices are never throttled.
+    ThrottlerModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => [
+        {
+          name: 'auth',
+          ttl: 60_000,
+          limit: config.get<number>('rateLimit.authPerMinute') ?? 10,
+        },
+      ],
+    }),
     PrismaModule,
     RedisModule,
     AuditModule,

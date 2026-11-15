@@ -9,7 +9,12 @@ import { PairingService } from './pairing.service';
 describe('PairingService', () => {
   let service: PairingService;
   let prisma: {
-    pairing: { create: jest.Mock; findFirst: jest.Mock; update: jest.Mock };
+    pairing: {
+      create: jest.Mock;
+      findFirst: jest.Mock;
+      update: jest.Mock;
+      updateMany: jest.Mock;
+    };
   };
   let tokens: { signDevice: jest.Mock };
   let devices: { createForPairing: jest.Mock };
@@ -17,7 +22,12 @@ describe('PairingService', () => {
 
   beforeEach(async () => {
     prisma = {
-      pairing: { create: jest.fn(), findFirst: jest.fn(), update: jest.fn() },
+      pairing: {
+        create: jest.fn(),
+        findFirst: jest.fn(),
+        update: jest.fn(),
+        updateMany: jest.fn().mockResolvedValue({ count: 1 }),
+      },
     };
     tokens = { signDevice: jest.fn().mockResolvedValue('device-token') };
     devices = {
@@ -66,6 +76,38 @@ describe('PairingService', () => {
     expect(prisma.pairing.update).toHaveBeenCalledWith({
       where: { id: 'p1' },
       data: { status: 'CLAIMED', claimedDeviceId: 'd1' },
+    });
+  });
+
+  it('claim lets only one of two simultaneous claims win', async () => {
+    prisma.pairing.findFirst.mockResolvedValue({
+      id: 'p1',
+      familyId: 'f1',
+      status: 'PENDING',
+      expiresAt: new Date(Date.now() + 60_000),
+      deviceName: null,
+    });
+    // The other phone flipped PENDING -> CLAIMED between our read and our write.
+    prisma.pairing.updateMany.mockResolvedValue({ count: 0 });
+    await expect(service.claim({ token: 'tok' })).rejects.toBeInstanceOf(
+      BadRequestException,
+    );
+    expect(devices.createForPairing).not.toHaveBeenCalled();
+  });
+
+  it('claim releases the slot if creating the device fails', async () => {
+    prisma.pairing.findFirst.mockResolvedValue({
+      id: 'p1',
+      familyId: 'f1',
+      status: 'PENDING',
+      expiresAt: new Date(Date.now() + 60_000),
+      deviceName: null,
+    });
+    devices.createForPairing.mockRejectedValue(new Error('db down'));
+    await expect(service.claim({ token: 'tok' })).rejects.toThrow('db down');
+    expect(prisma.pairing.update).toHaveBeenCalledWith({
+      where: { id: 'p1' },
+      data: { status: 'PENDING' },
     });
   });
 

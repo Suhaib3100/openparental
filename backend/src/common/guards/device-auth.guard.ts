@@ -5,6 +5,7 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { TokenService } from '../../auth/token.service';
+import { PrismaService } from '../../prisma/prisma.service';
 
 function extractBearer(req: { headers?: Record<string, unknown> }): string | null {
   const header = req.headers?.authorization;
@@ -16,7 +17,10 @@ function extractBearer(req: { headers?: Record<string, unknown> }): string | nul
 /** Guards managed (child-device) routes. Requires a valid `device` token. */
 @Injectable()
 export class DeviceAuthGuard implements CanActivate {
-  constructor(private readonly tokens: TokenService) {}
+  constructor(
+    private readonly tokens: TokenService,
+    private readonly prisma: PrismaService,
+  ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const req = context.switchToHttp().getRequest();
@@ -31,6 +35,15 @@ export class DeviceAuthGuard implements CanActivate {
     }
     if (payload.typ !== 'device') {
       throw new UnauthorizedException('wrong token type');
+    }
+    // Device tokens live for a year. Without this lookup, removing a device in
+    // the parent app would not cut it off: its old token would keep working.
+    const device = await this.prisma.device.findUnique({
+      where: { id: payload.sub },
+      select: { familyId: true },
+    });
+    if (!device || device.familyId !== payload.fid) {
+      throw new UnauthorizedException('device revoked');
     }
     req.device = { deviceId: payload.sub, familyId: payload.fid };
     return true;

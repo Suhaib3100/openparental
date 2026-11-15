@@ -1,5 +1,6 @@
 import { ExecutionContext, UnauthorizedException } from '@nestjs/common';
 import { TokenService } from '../../auth/token.service';
+import { PrismaService } from '../../prisma/prisma.service';
 import { DeviceAuthGuard } from './device-auth.guard';
 
 function context(headers: Record<string, unknown>): {
@@ -15,11 +16,14 @@ function context(headers: Record<string, unknown>): {
 
 describe('DeviceAuthGuard', () => {
   const tokens = { verify: jest.fn() } as unknown as TokenService;
+  const findUnique = jest.fn();
+  const prisma = { device: { findUnique } } as unknown as PrismaService;
   let guard: DeviceAuthGuard;
 
   beforeEach(() => {
     jest.clearAllMocks();
-    guard = new DeviceAuthGuard(tokens);
+    findUnique.mockResolvedValue({ familyId: 'f1' });
+    guard = new DeviceAuthGuard(tokens, prisma);
   });
 
   it('allows a valid device token and attaches the device', async () => {
@@ -31,6 +35,19 @@ describe('DeviceAuthGuard', () => {
     const { ctx, req } = context({ authorization: 'Bearer good' });
     await expect(guard.canActivate(ctx)).resolves.toBe(true);
     expect(req.device).toEqual({ deviceId: 'd1', familyId: 'f1' });
+  });
+
+  it('rejects a token for a device the parent removed', async () => {
+    (tokens.verify as jest.Mock).mockResolvedValue({
+      sub: 'd1',
+      fid: 'f1',
+      typ: 'device',
+    });
+    findUnique.mockResolvedValue(null);
+    const { ctx } = context({ authorization: 'Bearer old' });
+    await expect(guard.canActivate(ctx)).rejects.toBeInstanceOf(
+      UnauthorizedException,
+    );
   });
 
   it('rejects an access token on a device route', async () => {

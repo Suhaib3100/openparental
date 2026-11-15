@@ -1,3 +1,4 @@
+import { ThrottlerGuard } from '@nestjs/throttler';
 import {
   Body,
   Controller,
@@ -40,6 +41,7 @@ export class DevicesController {
 
   @Post('token')
   @HttpCode(HttpStatus.OK)
+  @UseGuards(ThrottlerGuard)
   token(@Body() dto: DeviceTokenDto) {
     return this.devices.reauth(dto.deviceId, dto.secret);
   }
